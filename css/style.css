@@ -1677,3 +1677,88 @@ button {
   transition: none !important;
 }
 
+/* ==========================================================================
+   15. Typing tagline and "By the numbers" strip
+   ========================================================================== */
+
+/* ---------- 15a. Typing tagline (main.js reveals .hero__typed) ---------- */
+/* each typed letter only re-lays out and repaints this one line */
+.hero__tagline {
+  contain: layout paint;
+}
+
+.hero__typed {
+  white-space: nowrap;
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: var(--cursor-width);
+  height: 1.1em;
+  margin-left: var(--spacing-xs);
+  background: currentColor;
+  vertical-align: text-bottom;
+  animation: blink var(--cursor-blink) steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- 15b. By the numbers ---------- */
+.stats {
+  margin-bottom: var(--spacing-xl);
+}
+
+.stats__title {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns-2);
+  gap: var(--spacing-md);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat__value {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-stat);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--line-height-tight);
+}
+
+.stat__label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+}
+
+@media (min-width: 640px) {
+  .stats__grid {
+    grid-template-columns: var(--grid-columns-4);
+  }
+
+  .stat {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
+

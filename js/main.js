@@ -479,6 +479,127 @@
     });
   }
 
+  /* ---------- 13. Typing tagline in the hero ---------- */
+  function initTypingTagline() {
+    const tagline = document.querySelector(".hero__tagline");
+    if (!tagline || reduceMotion.matches) {
+      return; // reduced motion: the full static tagline stays
+    }
+    const full = tagline.querySelector(".hero__tagline-text");
+    const typed = tagline.querySelector(".hero__typed");
+    const output = tagline.querySelector(".hero__typed-text");
+    if (!full || !typed || !output) {
+      return;
+    }
+
+    // the words are the parts of the real tagline, so there is only one place to edit
+    const words = full.textContent.split("|").map((word) => word.trim()).filter(Boolean);
+    if (words.length === 0) {
+      return;
+    }
+    const typeDelay = readTime("--typing-speed", 70);
+    const deleteDelay = readTime("--typing-delete-speed", 35);
+    const pause = readTime("--typing-pause", 1800);
+
+    full.classList.add("visually-hidden"); // still read by screen readers
+    typed.hidden = false;
+
+    // start with the first word already written, so the line is never empty
+    let word = 0;
+    let letters = words[0].length;
+    let deleting = true;
+    output.textContent = words[0];
+
+    const tick = () => {
+      const text = words[word];
+      if (!deleting) {
+        letters += 1;
+        output.textContent = text.slice(0, letters);
+        if (letters >= text.length) {
+          deleting = true;
+          window.setTimeout(tick, pause);
+          return;
+        }
+        window.setTimeout(tick, typeDelay);
+        return;
+      }
+      letters -= 1;
+      output.textContent = text.slice(0, letters);
+      if (letters <= 0) {
+        deleting = false;
+        word = (word + 1) % words.length;
+        window.setTimeout(tick, typeDelay * 4);
+        return;
+      }
+      window.setTimeout(tick, deleteDelay);
+    };
+
+    // begin typing only once the page has finished loading (keeps start-up light)
+    const start = () => window.setTimeout(tick, pause);
+    if (document.readyState === "complete") {
+      start();
+    } else {
+      window.addEventListener("load", start, { once: true });
+    }
+  }
+
+  /* ---------- 14. "By the numbers" count-up ---------- */
+  function initCountUp() {
+    const values = Array.from(document.querySelectorAll(".stat__value"));
+    if (values.length === 0 || reduceMotion.matches || !("IntersectionObserver" in window)) {
+      return; // the final numbers are already in the HTML
+    }
+    const duration = readTime("--count-duration", 1600);
+
+    const counters = values.map((element) => {
+      const text = element.textContent.trim();
+      const match = text.match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+      if (!match) {
+        return null;
+      }
+      const decimals = (match[2].split(".")[1] || "").length;
+      const format = (value) => match[1] + value.toFixed(decimals) + match[3];
+
+      // screen readers keep the real value; the animated copy is hidden from them
+      const finalText = document.createElement("span");
+      finalText.className = "visually-hidden";
+      finalText.textContent = text;
+      const display = document.createElement("span");
+      display.setAttribute("aria-hidden", "true");
+      display.textContent = format(0);
+      element.textContent = "";
+      element.append(finalText, display);
+
+      return { element, display, target: parseFloat(match[2]), format };
+    }).filter(Boolean);
+
+    const run = (counter) => {
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out
+        counter.display.textContent = counter.format(counter.target * eased);
+        if (t < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = counters.find((item) => item.element === entry.target);
+          if (counter) {
+            run(counter);
+          }
+          obs.unobserve(entry.target); // count once
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((counter) => observer.observe(counter.element));
+  }
+
   /* ---------- Start ---------- */
   function init() {
     initThemeToggle();
@@ -492,6 +613,8 @@
     initYear();
     initHeroGlow();
     initCardTilt();
+    initTypingTagline();
+    initCountUp();
   }
 
   if (document.readyState === "loading") {
