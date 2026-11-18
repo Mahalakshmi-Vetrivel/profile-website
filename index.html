@@ -553,6 +553,43 @@
   <!-- ===================== 6. FOOTER ===================== -->
   <footer class="footer" id="footer">
     <div class="container footer__inner">
+      <!-- EDIT: "How this site is built". Each <li class="pipeline__step"> is one step of the CI/CD pipeline. -->
+      <section class="pipeline" aria-labelledby="pipeline-title">
+        <div class="pipeline__header">
+          <p class="section__eyebrow">Behind the scenes</p>
+          <h2 class="pipeline__title" id="pipeline-title">How this site is built</h2>
+          <p class="pipeline__lead">Every change passes through five automated GitHub Actions steps before it reaches this page.</p>
+        </div>
+        <ol class="pipeline__steps">
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Push</h3>
+            <p class="pipeline__text">A git push or pull request starts the run; PRs must pass title, alt-text and console.log checks.</p>
+            <code class="pipeline__file">pr-checks.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Validate</h3>
+            <p class="pipeline__text">HTMLHint, CSSLint and csstree-validator check the code on every push.</p>
+            <code class="pipeline__file">validate.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Deploy</h3>
+            <p class="pipeline__text">A merge to main publishes the site to GitHub Pages automatically.</p>
+            <code class="pipeline__file">deploy.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Lighthouse</h3>
+            <p class="pipeline__text">Audits the live site after each deploy and every Monday, and keeps the report.</p>
+            <code class="pipeline__file">lighthouse.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Notify</h3>
+            <p class="pipeline__text">Reports whether the deploy succeeded or failed, with an optional Slack message.</p>
+            <code class="pipeline__file">notify.yml</code>
+          </li>
+        </ol>
+        <a class="pipeline__link" href="https://github.com/Mahalakshmi-Vetrivel/profile-website/actions" target="_blank" rel="noopener noreferrer">See the runs on GitHub Actions <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+      </section>
+
       <div class="footer__intro">
         <p class="section__eyebrow"><span class="section__number">05</span> Let's connect</p>
         <h2 class="footer__title">Thanks for scrolling all the way down.</h2>
