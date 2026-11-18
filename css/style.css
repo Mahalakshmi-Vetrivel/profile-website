@@ -1762,3 +1762,195 @@ button {
   }
 }
 
+/* ==========================================================================
+   16. Project spotlight (inside #journey)
+   ========================================================================== */
+.projects {
+  margin-top: var(--spacing-xl);
+}
+
+.projects__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.projects__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.projects__lead {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns-1);
+  gap: var(--spacing-lg);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease,
+    opacity var(--transition-speed-slow) var(--ease), transform var(--transition-speed-slow) var(--ease);
+}
+
+.project-card:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.project-card__icon {
+  flex-shrink: 0;
+  width: var(--flow-icon-size);
+  height: var(--flow-icon-size);
+}
+
+.project-card__kicker {
+  color: var(--color-accent);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.project-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.project-card__text {
+  color: var(--color-text-secondary);
+}
+
+.project-card .chips {
+  margin-top: 0;
+}
+
+.flow__title {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* "How it works": a vertical list on phones ... */
+.flow {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.flow__step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg-secondary);
+}
+
+.flow__icon {
+  flex-shrink: 0;
+  width: var(--flow-icon-size);
+  height: var(--flow-icon-size);
+}
+
+.flow__label {
+  min-width: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+/* connector line and arrow head between two steps (pointing down) */
+.flow__step + .flow__step::before,
+.flow__step + .flow__step::after {
+  position: absolute;
+  content: "";
+}
+
+.flow__step + .flow__step::before {
+  bottom: 100%;
+  left: calc(var(--spacing-md) + var(--flow-icon-size) / 2 - var(--border-width));
+  width: calc(var(--border-width) * 2);
+  height: var(--spacing-md);
+  background: var(--color-primary-light);
+}
+
+.flow__step + .flow__step::after {
+  bottom: 100%;
+  left: calc(var(--spacing-md) + var(--flow-icon-size) / 2 - var(--arrow-size) / 2);
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border-right: calc(var(--border-width) * 2) solid var(--color-primary-light);
+  border-bottom: calc(var(--border-width) * 2) solid var(--color-primary-light);
+  transform: translateY(40%) rotate(45deg);
+}
+
+/* ... and a horizontal row with arrows from 640px up */
+@media (min-width: 640px) {
+  .project-card {
+    padding: var(--spacing-lg);
+  }
+
+  .flow {
+    grid-auto-columns: var(--grid-auto-equal);
+    grid-auto-flow: column;
+  }
+
+  .flow__step {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-sm);
+    text-align: center;
+  }
+
+  .flow__step + .flow__step::before {
+    top: calc(var(--spacing-md) + var(--flow-icon-size) / 2 - var(--border-width));
+    right: 100%;
+    bottom: auto;
+    left: auto;
+    width: var(--spacing-md);
+    height: calc(var(--border-width) * 2);
+  }
+
+  .flow__step + .flow__step::after {
+    top: calc(var(--spacing-md) + var(--flow-icon-size) / 2 - var(--arrow-size) / 2);
+    right: 100%;
+    bottom: auto;
+    left: auto;
+    transform: translateX(-10%) rotate(-45deg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .projects__grid {
+    grid-template-columns: var(--grid-columns-2);
+  }
+}
+
