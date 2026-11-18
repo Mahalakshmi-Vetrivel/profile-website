@@ -87,7 +87,7 @@
             <span class="hero__typed" aria-hidden="true" aria-live="off" hidden><span class="hero__typed-text"></span><span class="hero__cursor"></span></span>
           </p>
           <p class="hero__intro hero__animate hero__animate--4">
-            I like turning signals into insight, whether that's EEG data on an ESP32, numbers in a Power BI dashboard, or a clean page like this one.
+            I enjoy exploring emerging technologies, solving real-world problems, and building practical, reliable solutions, while continuously learning and growing as a professional.
           </p>
           <div class="hero__actions hero__animate hero__animate--5">
             <a class="btn btn--primary" href="#journey">Explore My Journey <span aria-hidden="true">&rarr;</span></a>
@@ -96,11 +96,7 @@
         </div>
 
         <div class="hero__visual hero__animate hero__animate--3">
-          <div class="hero__orbit" aria-hidden="true"></div>
-          <img class="hero__avatar" src="images/hero/profile-avatar.svg" alt="Illustrated portrait of Mahalakshmi, smiling, in a lavender kurta" width="400" height="400">
-          <span class="hero__badge hero__badge--one">Python</span>
-          <span class="hero__badge hero__badge--two">Power BI</span>
-          <span class="hero__badge hero__badge--three">HTML &amp; CSS</span>
+          <img class="hero__avatar" src="images/hero/profile-photo.jpeg" alt="Photo of Mahalakshmi Vetrivel" width="1500" height="1000">
         </div>
       </div>
 
@@ -137,10 +133,6 @@
             <li class="stat">
               <span class="stat__value">2</span>
               <span class="stat__label">Projects built end to end</span>
-            </li>
-            <li class="stat">
-              <span class="stat__value">5</span>
-              <span class="stat__label">Automated workflows run this site</span>
             </li>
           </ul>
         </div>
@@ -231,7 +223,7 @@
               <div class="timeline__body">
                 <h3 class="timeline__title">Graduate Trainee</h3>
                 <p class="timeline__org">Psiog</p>
-                <p class="timeline__text">Joined on 17 August 2026. I'm training in professional software practices, and this website, with its Git workflow and CI/CD pipeline, is part of that training.</p>
+                <p class="timeline__text">Joined on 17 August 2026. I'm building a strong foundation in professional software development, learning industry best practices, and gaining hands-on experience in delivering quality, real-world solutions.</p>
               </div>
             </article>
           </li>
@@ -335,7 +327,7 @@
           <!-- EDIT: each <article class="interest-card"> is one card. -->
           <article class="interest-card reveal">
             <div class="interest-card__media">
-              <img src="images/interests/music.svg" alt="Illustration of headphones surrounded by music notes" width="480" height="360" loading="lazy">
+              <img src="images/interests/music.jpg" data-fallback="images/interests/music.svg" alt="White headphones around a glossy red heart" width="480" height="360" loading="lazy">
             </div>
             <div class="interest-card__body">
               <h3 class="interest-card__title">Music</h3>
@@ -349,7 +341,7 @@
 
           <article class="interest-card reveal">
             <div class="interest-card__media">
-              <img src="images/interests/movies.svg" alt="Illustration of a clapperboard next to a magnifying glass" width="480" height="360" loading="lazy">
+              <img src="images/interests/movies.jpg" data-fallback="images/interests/movies.svg" alt="A striped popcorn bucket with 3D glasses and film reels" width="480" height="360" loading="lazy">
             </div>
             <div class="interest-card__body">
               <h3 class="interest-card__title">Movies &amp; Series</h3>
@@ -367,7 +359,7 @@
 
           <article class="interest-card reveal">
             <div class="interest-card__media">
-              <img src="images/interests/food.svg" alt="Illustration of a plate of spicy non-vegetarian food with steam rising" width="480" height="360" loading="lazy">
+              <img src="images/interests/food.jpg" data-fallback="images/interests/food.svg" alt="A bowl of spicy curry with naan, samosas and fresh salad" width="480" height="360" loading="lazy">
             </div>
             <div class="interest-card__body">
               <h3 class="interest-card__title">Food</h3>
@@ -379,10 +371,25 @@
             </div>
           </article>
 
-          <!-- SAMPLE CONTENT: Travel card. Replace with places you've visited or want to visit. -->
+          <!-- EDIT: Books card. Update the chip when you start a new book. -->
           <article class="interest-card reveal">
             <div class="interest-card__media">
-              <img src="images/interests/travel.svg" alt="Illustration of mountains, a winding path and a map pin" width="480" height="360" loading="lazy">
+              <img src="images/interests/books.jpg" data-fallback="images/interests/books.svg" alt="An open book on a wooden table with paper butterflies rising from its pages" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Books</h3>
+              <p class="interest-card__text">A habit I've recently started and am enjoying more with every page. I'm currently reading <cite>The Silent Patient</cite> by Alex Michaelides, a gripping psychological thriller.</p>
+              <ul class="chips" aria-label="Reading tags">
+                <li class="chip">Currently reading: The Silent Patient</li>
+                <li class="chip">Psychological thriller</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Travel card -->
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/travel.jpg" data-fallback="images/interests/travel.svg" alt="Green tea-garden hills around a lake, with mountains behind" width="480" height="360" loading="lazy">
             </div>
             <div class="interest-card__body">
               <h3 class="interest-card__title">Travel</h3>
@@ -396,7 +403,7 @@
 
           <article class="interest-card reveal">
             <div class="interest-card__media">
-              <img src="images/interests/data-electronics.svg" alt="Illustration of a bar-chart dashboard beside a microcontroller board" width="480" height="360" loading="lazy">
+              <img src="images/interests/data-electronics.jpg" data-fallback="images/interests/data-electronics.svg" alt="A glowing blue circuit board with a microchip at its centre" width="480" height="360" loading="lazy">
             </div>
             <div class="interest-card__body">
               <h3 class="interest-card__title">Data &amp; Electronics</h3>
@@ -422,7 +429,7 @@
         </header>
 
         <figure class="family__banner reveal">
-          <img src="images/family/family-group.svg" alt="Illustration of my family together: Appa, Amma, me and my brother" width="1200" height="500" loading="lazy">
+          <img src="images/family/family-group.jpg" alt="Illustration of my family together: Appa, Amma, my brother and me" width="1376" height="612" loading="lazy">
         </figure>
 
         <div class="family__grid">
@@ -430,7 +437,7 @@
           <div class="flip-card reveal">
             <button class="flip-card__inner" type="button" aria-pressed="false">
               <span class="flip-card__face flip-card__face--front">
-                <img class="flip-card__avatar" src="images/family/member-amma.svg" alt="" width="400" height="400" loading="lazy">
+                <img class="flip-card__avatar" src="images/family/member-amma.jpg" alt="" width="600" height="600" loading="lazy">
                 <span class="flip-card__relation">Amma</span>
                 <span class="flip-card__name">SornaLatha</span>
                 <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
@@ -445,7 +452,7 @@
           <div class="flip-card reveal">
             <button class="flip-card__inner" type="button" aria-pressed="false">
               <span class="flip-card__face flip-card__face--front">
-                <img class="flip-card__avatar" src="images/family/member-appa.svg" alt="" width="400" height="400" loading="lazy">
+                <img class="flip-card__avatar" src="images/family/member-appa.jpg" alt="" width="600" height="600" loading="lazy">
                 <span class="flip-card__relation">Appa</span>
                 <span class="flip-card__name">Vetrivel Murugan</span>
                 <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
@@ -460,7 +467,7 @@
           <div class="flip-card reveal">
             <button class="flip-card__inner" type="button" aria-pressed="false">
               <span class="flip-card__face flip-card__face--front">
-                <img class="flip-card__avatar" src="images/family/member-brother.svg" alt="" width="400" height="400" loading="lazy">
+                <img class="flip-card__avatar" src="images/family/member-brother.jpg" alt="" width="600" height="600" loading="lazy">
                 <span class="flip-card__relation">My Brother</span>
                 <span class="flip-card__name">Sridhar</span>
                 <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
@@ -481,45 +488,39 @@
         <header class="section__header reveal">
           <p class="section__eyebrow"><span class="section__number">04</span> Hobbies &amp; Passions</p>
           <h2 class="section__title" id="hobbies-title">How I spend my free time</h2>
-          <p class="section__lead">Cooking, music and badminton: the three things that recharge me. Click any tile to open it.</p>
+          <p class="section__lead">Cooking, badminton, music, gardening and time with the people I love: the things that recharge me. Click any tile to open it.</p>
         </header>
 
         <!-- EDIT: each <li> is one tile. data-title and data-description feed the lightbox. -->
         <ul class="gallery">
           <li class="gallery__item reveal">
             <button class="gallery__button" type="button" data-title="Cooking" data-description="Cooking is how I unwind. I love experimenting in the kitchen, especially with spicy non-veg dishes, and nothing beats seeing everyone enjoy the food.">
-              <img src="images/hobbies/cooking.svg" alt="Illustration of a kadai on the stove with spices and rising steam" width="480" height="400" loading="lazy">
+              <img src="images/hobbies/cooking.jpg" data-fallback="images/hobbies/cooking.svg" alt="Colourful vegetables stir-frying in a wok on the stove" width="480" height="400" loading="lazy">
               <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">Stirring up something spicy</span></span>
             </button>
           </li>
           <li class="gallery__item reveal">
-            <button class="gallery__button" type="button" data-title="On the court" data-description="Whether it is a friendly doubles match or a solo practice, badminton is where I get my energy back.">
-              <img src="images/hobbies/badminton-court.svg" alt="Illustration of a badminton court from above with the shuttle's flight path" width="480" height="320" loading="lazy">
-              <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">On the court</span></span>
-            </button>
-          </li>
-          <li class="gallery__item reveal">
-            <button class="gallery__button" type="button" data-title="Badminton" data-description="Badminton keeps me active and competitive. A quick game is my favourite way to reset after a long day.">
-              <img src="images/hobbies/badminton.svg" alt="Illustration of a badminton racquet and a shuttlecock in motion" width="480" height="460" loading="lazy">
+            <button class="gallery__button" type="button" data-title="Badminton" data-description="Badminton keeps me active and competitive. Whether it is a friendly doubles match or a quick game after a long day, it is where I get my energy back.">
+              <img src="images/hobbies/badminton.jpg" data-fallback="images/hobbies/badminton.svg" alt="A badminton racquet and two shuttlecocks on green grass" width="480" height="460" loading="lazy">
               <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">Smash, rally, repeat</span></span>
             </button>
           </li>
           <li class="gallery__item reveal">
-            <button class="gallery__button" type="button" data-title="Music evenings" data-description="Evenings are for slowing down with soft melodies, sometimes while cooking dinner, sometimes just to relax.">
-              <img src="images/hobbies/music-evenings.svg" alt="Illustration of a spinning record player" width="480" height="320" loading="lazy">
-              <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Music evenings</span></span>
-            </button>
-          </li>
-          <li class="gallery__item reveal">
-            <button class="gallery__button" type="button" data-title="Music" data-description="Melody songs fill my day. A good playlist makes long study sessions, commutes and cooking time so much better.">
-              <img src="images/hobbies/music-melody.svg" alt="Illustration of a melody waveform with a music player bar" width="480" height="440" loading="lazy">
+            <button class="gallery__button" type="button" data-title="Music" data-description="Melody songs fill my day. A good playlist makes long study sessions, commutes and quiet evenings so much better.">
+              <img src="images/hobbies/music.jpg" data-fallback="images/hobbies/music-melody.svg" alt="A record player with a glowing heart and music note above it" width="480" height="440" loading="lazy">
               <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Melodies on repeat</span></span>
             </button>
           </li>
           <li class="gallery__item reveal">
-            <button class="gallery__button" type="button" data-title="The spice box" data-description="Every good dish starts with the right masala. Learning how each spice changes a dish is my favourite part of cooking.">
-              <img src="images/hobbies/cooking-spices.svg" alt="Illustration of a round spice box with seven colourful spices" width="480" height="400" loading="lazy">
-              <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">The spice box</span></span>
+            <button class="gallery__button" type="button" data-title="Gardening" data-description="Gardening is my quiet time. Watering the plants, watching new leaves appear and caring for them day by day keeps me calm and patient.">
+              <img src="images/hobbies/gardening.jpg" data-fallback="images/hobbies/gardening.svg" alt="Gloved hands tending young plants with a hand fork and trowel" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Gardening</span><span class="gallery__label">Watching things grow</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Friends &amp; family" data-description="Some of my favourite moments are simply spent talking with my friends and family. Sharing stories, laughing together and catching up always leaves me refreshed.">
+              <img src="images/hobbies/friends-family.jpg" data-fallback="images/hobbies/friends-family.svg" alt="Friends chatting over tea in a sunlit living room" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Friends &amp; Family</span><span class="gallery__label">Conversations that recharge me</span></span>
             </button>
           </li>
         </ul>
@@ -553,47 +554,10 @@
   <!-- ===================== 6. FOOTER ===================== -->
   <footer class="footer" id="footer">
     <div class="container footer__inner">
-      <!-- EDIT: "How this site is built". Each <li class="pipeline__step"> is one step of the CI/CD pipeline. -->
-      <section class="pipeline" aria-labelledby="pipeline-title">
-        <div class="pipeline__header">
-          <p class="section__eyebrow">Behind the scenes</p>
-          <h2 class="pipeline__title" id="pipeline-title">How this site is built</h2>
-          <p class="pipeline__lead">Every change passes through five automated GitHub Actions steps before it reaches this page.</p>
-        </div>
-        <ol class="pipeline__steps">
-          <li class="pipeline__step">
-            <h3 class="pipeline__name">Push</h3>
-            <p class="pipeline__text">A git push or pull request starts the run; PRs must pass title, alt-text and console.log checks.</p>
-            <code class="pipeline__file">pr-checks.yml</code>
-          </li>
-          <li class="pipeline__step">
-            <h3 class="pipeline__name">Validate</h3>
-            <p class="pipeline__text">HTMLHint, CSSLint and csstree-validator check the code on every push.</p>
-            <code class="pipeline__file">validate.yml</code>
-          </li>
-          <li class="pipeline__step">
-            <h3 class="pipeline__name">Deploy</h3>
-            <p class="pipeline__text">A merge to main publishes the site to GitHub Pages automatically.</p>
-            <code class="pipeline__file">deploy.yml</code>
-          </li>
-          <li class="pipeline__step">
-            <h3 class="pipeline__name">Lighthouse</h3>
-            <p class="pipeline__text">Audits the live site after each deploy and every Monday, and keeps the report.</p>
-            <code class="pipeline__file">lighthouse.yml</code>
-          </li>
-          <li class="pipeline__step">
-            <h3 class="pipeline__name">Notify</h3>
-            <p class="pipeline__text">Reports whether the deploy succeeded or failed, with an optional Slack message.</p>
-            <code class="pipeline__file">notify.yml</code>
-          </li>
-        </ol>
-        <a class="pipeline__link" href="https://github.com/Mahalakshmi-Vetrivel/profile-website/actions" target="_blank" rel="noopener noreferrer">See the runs on GitHub Actions <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-      </section>
-
       <div class="footer__intro">
         <p class="section__eyebrow"><span class="section__number">05</span> Let's connect</p>
-        <h2 class="footer__title">Thanks for scrolling all the way down.</h2>
-        <p class="footer__text">I'm always happy to talk about data, electronics or the web. Reach out on any of these.</p>
+        <h2 class="footer__title">Let's work together</h2>
+        <p class="footer__text">Open to new opportunities, collaborations and conversations about data, electronics and the web. I'd be glad to hear from you.</p>
       </div>
 
       <!-- EDIT: social links -->
