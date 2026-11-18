@@ -28,6 +28,21 @@
     }
   }
 
+  /* ---------- Read a value from theme.css (speeds live there, not here) ---------- */
+  function readToken(name) {
+    return window.getComputedStyle(root).getPropertyValue(name).trim();
+  }
+
+  // "0.65s" or "650ms" -> milliseconds; fallback if the token is missing
+  function readTime(name, fallback) {
+    const raw = readToken(name);
+    const value = parseFloat(raw);
+    if (Number.isNaN(value)) {
+      return fallback;
+    }
+    return raw.endsWith("ms") ? value : value * 1000;
+  }
+
   /* ---------- 1. Apply theme immediately ---------- */
   function applyTheme(theme) {
     if (theme === "dark") {
@@ -53,12 +68,42 @@
       button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
     };
 
-    syncButton();
-    button.addEventListener("click", () => {
+    const switchTheme = () => {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       applyTheme(next);
       storeTheme(next);
       syncButton();
+    };
+
+    syncButton();
+    button.addEventListener("click", () => {
+      // no View Transitions API, or the visitor prefers less motion: switch instantly
+      if (typeof document.startViewTransition !== "function" || reduceMotion.matches) {
+        switchTheme();
+        return;
+      }
+
+      // the new theme is revealed as a circle growing from the centre of the button
+      const box = button.getBoundingClientRect();
+      const x = box.left + box.width / 2;
+      const y = box.top + box.height / 2;
+      const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+      root.classList.add("is-theme-switching");
+      const transition = document.startViewTransition(switchTheme);
+      transition.ready.then(() => {
+        root.animate(
+          { clipPath: ["circle(0px at " + x + "px " + y + "px)", "circle(" + radius + "px at " + x + "px " + y + "px)"] },
+          {
+            duration: readTime("--transition-speed-theme", 650),
+            easing: readToken("--ease") || "ease-out",
+            pseudoElement: "::view-transition-new(root)"
+          }
+        );
+      }).catch(() => {
+        /* transition skipped by the browser: the theme has still switched */
+      });
+      transition.finished.finally(() => root.classList.remove("is-theme-switching"));
     });
   }
 
@@ -133,11 +178,31 @@
     });
   }
 
-  /* ---------- 5. Header shadow + back-to-top + active nav link ---------- */
+  /* ---------- 5. Header shadow + back-to-top + scroll progress + active section ---------- */
   function initScrollState() {
     const header = document.querySelector(".site-header");
     const backToTop = document.querySelector(".back-to-top");
+    const progress = document.querySelector(".scroll-progress__bar");
+    const links = Array.from(document.querySelectorAll(".nav__link, .section-dots__link"));
+    const lastId = links.length ? links[links.length - 1].getAttribute("href").slice(1) : "";
     let ticking = false;
+
+    // mark the nav link and section dot of one section as active
+    const setActive = (id) => {
+      links.forEach((link) => {
+        const active = link.getAttribute("href") === "#" + id;
+        link.classList.toggle("is-active", active);
+        if (link.classList.contains("section-dots__link")) {
+          if (active) {
+            link.setAttribute("aria-current", "true");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        }
+      });
+    };
+
+    const atBottom = () => window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
 
     const update = () => {
       const y = window.scrollY;
@@ -147,15 +212,27 @@
       if (backToTop) {
         backToTop.classList.toggle("is-visible", y > window.innerHeight * 0.8);
       }
+      if (progress) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? Math.min(Math.max(y / max, 0), 1) : 0;
+        progress.style.setProperty("--scroll-progress", ratio.toFixed(4));
+      }
+      // a short last section (the footer) never reaches the middle of the screen
+      if (lastId && atBottom()) {
+        setActive(lastId);
+      }
       ticking = false;
     };
 
-    window.addEventListener("scroll", () => {
+    const requestUpdate = () => {
       if (!ticking) {
         window.requestAnimationFrame(update);
         ticking = true;
       }
-    }, { passive: true });
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
     update();
 
     if (backToTop) {
@@ -168,25 +245,21 @@
       });
     }
 
-    // highlight the nav link of the section currently on screen
-    const links = document.querySelectorAll(".nav__link");
+    // highlight the nav link and section dot of the section in the middle of the screen
     if (!("IntersectionObserver" in window) || links.length === 0) {
       return;
     }
-    const linkFor = new Map();
-    links.forEach((link) => linkFor.set(link.getAttribute("href").slice(1), link));
+    const ids = new Set(links.map((link) => link.getAttribute("href").slice(1)));
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const link = linkFor.get(entry.target.id);
-        if (link && entry.isIntersecting) {
-          links.forEach((other) => other.classList.remove("is-active"));
-          link.classList.add("is-active");
+        if (entry.isIntersecting && !atBottom()) {
+          setActive(entry.target.id);
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
 
-    linkFor.forEach((link, id) => {
+    ids.forEach((id) => {
       const section = document.getElementById(id);
       if (section) {
         observer.observe(section);
@@ -316,6 +389,96 @@
     });
   }
 
+  /* ---------- 11. Soft cursor glow in the hero (mouse only) ---------- */
+  function initHeroGlow() {
+    const hero = document.querySelector(".hero");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!hero || !finePointer.matches || reduceMotion.matches) {
+      return;
+    }
+
+    let originX = 0;
+    let originY = 0;
+    let x = 0;
+    let y = 0;
+    let frame = 0;
+
+    // only CSS custom properties are written, once per frame (no layout reads in between)
+    const paint = () => {
+      hero.style.setProperty("--glow-x", x + "px");
+      hero.style.setProperty("--glow-y", y + "px");
+      frame = 0;
+    };
+
+    hero.addEventListener("pointerenter", () => {
+      const box = hero.getBoundingClientRect();
+      originX = box.left + window.scrollX;
+      originY = box.top + window.scrollY;
+      hero.classList.add("is-glowing");
+    });
+
+    hero.addEventListener("pointermove", (event) => {
+      x = event.pageX - originX;
+      y = event.pageY - originY;
+      if (!frame) {
+        frame = window.requestAnimationFrame(paint);
+      }
+    });
+
+    hero.addEventListener("pointerleave", () => hero.classList.remove("is-glowing"));
+  }
+
+  /* ---------- 12. Gentle 3D tilt on the interest cards (mouse only) ---------- */
+  function initCardTilt() {
+    const cards = document.querySelectorAll(".interest-card");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (cards.length === 0 || !finePointer.matches || reduceMotion.matches) {
+      return;
+    }
+    const maxTilt = parseFloat(readToken("--tilt-max")) || 6; // degrees
+
+    cards.forEach((card) => {
+      let box = null;
+      let px = 0.5;
+      let py = 0.5;
+      let frame = 0;
+
+      const paint = () => {
+        card.style.setProperty("--tilt-x", ((0.5 - py) * 2 * maxTilt).toFixed(2) + "deg");
+        card.style.setProperty("--tilt-y", ((px - 0.5) * 2 * maxTilt).toFixed(2) + "deg");
+        frame = 0;
+      };
+
+      card.addEventListener("pointerenter", () => {
+        box = card.getBoundingClientRect(); // measured once, so the tilt never feeds back into itself
+        card.classList.add("is-tilting");
+      });
+
+      card.addEventListener("pointermove", (event) => {
+        if (!box) {
+          return;
+        }
+        px = Math.min(Math.max((event.clientX - box.left) / box.width, 0), 1);
+        py = Math.min(Math.max((event.clientY - box.top) / box.height, 0), 1);
+        if (!frame) {
+          frame = window.requestAnimationFrame(paint);
+        }
+      });
+
+      // back to flat: the CSS transition makes the reset smooth
+      card.addEventListener("pointerleave", () => {
+        if (frame) {
+          window.cancelAnimationFrame(frame);
+          frame = 0;
+        }
+        box = null;
+        card.classList.remove("is-tilting");
+        card.style.removeProperty("--tilt-x");
+        card.style.removeProperty("--tilt-y");
+      });
+    });
+  }
+
   /* ---------- Start ---------- */
   function init() {
     initThemeToggle();
@@ -327,6 +490,8 @@
     initFlipCards();
     initLightbox();
     initYear();
+    initHeroGlow();
+    initCardTilt();
   }
 
   if (document.readyState === "loading") {

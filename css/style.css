@@ -1523,3 +1523,157 @@ button {
   }
 }
 
+/* ==========================================================================
+   14. Polish effects: scroll progress, section dots, hero glow,
+       interest-card tilt, animated theme switch
+   ========================================================================== */
+
+/* ---------- 14a. Scroll progress bar (inside the fixed header) ---------- */
+.scroll-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--progress-height);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  background: var(--gradient-progress);
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left center;
+}
+
+/* ---------- 14b. Section dots (desktop only) ---------- */
+.section-dots {
+  display: none;
+}
+
+@media (min-width: 1024px) and (min-height: 540px) {
+  /* wider side padding so page content never sits under the dots */
+  .container {
+    padding: 0 var(--container-gutter-wide);
+  }
+
+  .section-dots {
+    position: fixed;
+    top: 50%;
+    right: var(--spacing-sm);
+    z-index: 80;
+    display: block;
+    transform: translateY(-50%);
+  }
+
+  .section-dots__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-dots__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--touch-target);
+    height: var(--touch-target);
+    border-radius: var(--border-radius-pill);
+  }
+
+  /* the dot itself */
+  .section-dots__link::before {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border: calc(var(--border-width) * 2) solid var(--color-primary-light);
+    border-radius: 50%;
+    background: var(--color-bg);
+    content: "";
+    transition: transform var(--transition-speed) var(--ease), background-color var(--transition-speed) ease,
+      border-color var(--transition-speed) ease;
+  }
+
+  .section-dots__link:hover::before {
+    border-color: var(--color-accent);
+  }
+
+  .section-dots__link.is-active::before {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    transform: scale(var(--dot-scale-active));
+  }
+
+  /* tooltip label: always in the accessibility tree, shown on hover/focus */
+  .section-dots__label {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-pill);
+    background: var(--color-text);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-bg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(var(--spacing-xs), -50%);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) var(--ease);
+  }
+
+  .section-dots__link:hover .section-dots__label,
+  .section-dots__link:focus-visible .section-dots__label {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+/* ---------- 14c + 14d. Hero cursor glow and interest-card tilt ----------
+   Only for a real mouse (hover + fine pointer) and when motion is welcome.
+   main.js sets --glow-x/--glow-y and --tilt-x/--tilt-y inside rAF.        */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero__inner {
+    position: relative;
+  }
+
+  .hero::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(circle var(--glow-radius) at var(--glow-x, 50%) var(--glow-y, 50%), var(--color-glow), transparent);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-speed-slow) var(--ease);
+  }
+
+  .hero.is-glowing::before {
+    opacity: 1;
+  }
+
+  .js .interest-card.is-visible.is-tilting {
+    box-shadow: var(--shadow-lg);
+    transform: perspective(var(--tilt-perspective)) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-6px);
+    transition: transform var(--transition-speed-fast) linear, box-shadow var(--transition-speed) ease;
+  }
+}
+
+/* ---------- 14e. Animated theme switch (View Transitions API) ----------
+   main.js grows a circle from the toggle over the new theme. The browser's
+   default cross-fade is switched off so only the circle is seen.          */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* while the circle grows, colour transitions would blur the new snapshot */
+.is-theme-switching *,
+.is-theme-switching *::before,
+.is-theme-switching *::after {
+  transition: none !important;
+}
+
