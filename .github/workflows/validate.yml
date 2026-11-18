@@ -1,0 +1,49 @@
+# Workflow 1 — HTML & CSS Validation
+# Runs on every push and every pull request. Broken HTML or invalid CSS
+# fails this workflow, which (with branch protection) blocks the merge.
+#
+# Note on CSS tools: CSSLint (required by the assignment) dates from 2016 and
+# cannot parse CSS custom properties (--name: value). theme.css is made ONLY of
+# custom properties, so CSSLint is run on style.css, and BOTH files are also
+# checked by csstree-validator, a modern syntax validator that understands
+# variables. Tools are installed here in CI only; the website itself has no
+# npm packages.
+name: Validate HTML & CSS
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Install validation tools
+        run: |
+          npm install -g htmlhint csslint csstree-validator
+          htmlhint --version
+          csslint --version
+
+      - name: Validate HTML files (HTMLHint)
+        run: htmlhint "*.html" --config .htmlhintrc
+
+      - name: Lint CSS (CSSLint)
+        # rules are configured in .csslintrc
+        run: csslint css/style.css --quiet
+
+      - name: Validate CSS syntax incl. variables (csstree-validator)
+        run: csstree-validator css

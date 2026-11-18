@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mahalakshmi Vetrivel | ECE Graduate &amp; Graduate Trainee at Psiog</title>
+  <meta name="description" content="Personal profile of Mahalakshmi Vetrivel, an Electronics and Communication Engineering graduate working as a Graduate Trainee at Psiog, with interests in data analytics and web development.">
+  <meta name="author" content="Mahalakshmi Vetrivel">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Mahalakshmi Vetrivel | Profile">
+  <meta property="og:description" content="ECE Graduate, Graduate Trainee at Psiog, and data and web enthusiast.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/hero/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- main.js runs first in <head> only to apply the saved theme before the page paints (no flash). -->
+  <script src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav__brand" href="#hero">
+        <span class="nav__mark">MV</span><span class="nav__dot">.</span>
+        <span class="visually-hidden">Mahalakshmi Vetrivel, back to top</span>
+      </a>
+
+      <ul class="nav__links" id="nav-menu">
+        <li><a class="nav__link" href="#journey">Journey</a></li>
+        <li><a class="nav__link" href="#interests">Interests</a></li>
+        <li><a class="nav__link" href="#family">Family</a></li>
+        <li><a class="nav__link" href="#hobbies">Hobbies</a></li>
+        <li><a class="nav__link" href="#footer">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.5"/>
+            <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>
+          </svg>
+        </button>
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- scroll progress: main.js scales the bar from 0 to 100% as you scroll -->
+    <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar"></div></div>
+  </header>
+
+  <!-- ===================== SECTION DOTS (desktop only, 1024px and wider) ===================== -->
+  <nav class="section-dots" aria-label="Section shortcuts">
+    <ul class="section-dots__list">
+      <li><a class="section-dots__link" href="#hero"><span class="section-dots__label">Intro</span></a></li>
+      <li><a class="section-dots__link" href="#journey"><span class="section-dots__label">Journey</span></a></li>
+      <li><a class="section-dots__link" href="#interests"><span class="section-dots__label">Interests</span></a></li>
+      <li><a class="section-dots__link" href="#family"><span class="section-dots__label">Family</span></a></li>
+      <li><a class="section-dots__link" href="#hobbies"><span class="section-dots__label">Hobbies</span></a></li>
+      <li><a class="section-dots__link" href="#footer"><span class="section-dots__label">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+
+    <!-- ===================== 1. HERO ===================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <p class="hero__status hero__animate">
+            <span class="hero__status-dot" aria-hidden="true"></span>
+            Graduate Trainee at Psiog
+          </p>
+          <h1 class="hero__title hero__animate hero__animate--2" id="hero-title">
+            Mahalakshmi <span class="hero__title-accent">Vetrivel</span>
+          </h1>
+          <!-- EDIT: the tagline. main.js types each part between the | signs in turn; the full line stays for screen readers and no-JS visitors. -->
+          <p class="hero__tagline hero__animate hero__animate--3">
+            <span class="hero__tagline-text">ECE Graduate | Graduate Trainee at Psiog | Data &amp; Web Enthusiast</span>
+            <span class="hero__typed" aria-hidden="true" aria-live="off" hidden><span class="hero__typed-text"></span><span class="hero__cursor"></span></span>
+          </p>
+          <p class="hero__intro hero__animate hero__animate--4">
+            I like turning signals into insight, whether that's EEG data on an ESP32, numbers in a Power BI dashboard, or a clean page like this one.
+          </p>
+          <div class="hero__actions hero__animate hero__animate--5">
+            <a class="btn btn--primary" href="#journey">Explore My Journey <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost" href="#footer">Say hello</a>
+          </div>
+        </div>
+
+        <div class="hero__visual hero__animate hero__animate--3">
+          <div class="hero__orbit" aria-hidden="true"></div>
+          <img class="hero__avatar" src="images/hero/profile-avatar.svg" alt="Illustrated portrait of Mahalakshmi, smiling, in a lavender kurta" width="400" height="400">
+          <span class="hero__badge hero__badge--one">Python</span>
+          <span class="hero__badge hero__badge--two">Power BI</span>
+          <span class="hero__badge hero__badge--three">HTML &amp; CSS</span>
+        </div>
+      </div>
+
+      <!-- Signature motif: a signal trace, a nod to the EEG micro-sleep project -->
+      <svg class="hero__signal" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 40 H380 L410 40 L425 12 L445 70 L462 22 L476 40 H760 L780 40 L792 28 L806 54 L818 40 H1200"/>
+      </svg>
+      <a class="hero__scroll" href="#journey" aria-label="Scroll to Professional Journey">
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===================== 2. PROFESSIONAL JOURNEY ===================== -->
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">01</span> Professional Journey</p>
+          <h2 class="section__title" id="journey-title">From circuits to code</h2>
+          <p class="section__lead">School, engineering, three internships, two projects I'm proud of, and my first job.</p>
+        </header>
+
+        <!-- EDIT: "By the numbers". Each number is the final value; main.js counts up to it (decimals are kept). -->
+        <div class="stats reveal">
+          <h3 class="stats__title">By the numbers</h3>
+          <ul class="stats__grid">
+            <li class="stat">
+              <span class="stat__value">8.10</span>
+              <span class="stat__label">CGPA in B.E. ECE</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">3</span>
+              <span class="stat__label">Internships completed</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">2</span>
+              <span class="stat__label">Projects built end to end</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">5</span>
+              <span class="stat__label">Automated workflows run this site</span>
+            </li>
+          </ul>
+        </div>
+
+        <ol class="timeline">
+          <!-- EDIT: each <li class="timeline__item"> is one milestone. Copy one to add more. -->
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2021 – 2022</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/school.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Higher Secondary (HSC)</h3>
+                <p class="timeline__org">St. Joseph Convent Higher Secondary School</p>
+                <p class="timeline__text">Completed higher secondary with 83.83%, building the maths and science foundation for engineering.</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2022 – 2026</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/graduation.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">B.E. Electronics &amp; Communication Engineering</h3>
+                <p class="timeline__org">Amrita College of Engineering and Technology</p>
+                <p class="timeline__text">Graduated with a CGPA of 8.10, with a growing pull towards programming, data and problem solving.</p>
+                <div class="timeline__more" id="more-be" hidden>
+                  <p class="timeline__text">Alongside core ECE subjects I built skills in Python, object-oriented programming, data structures and algorithms (basics) and introductory machine learning. I also completed <strong>Python for Beginners</strong> (Udemy) and attended workshops on <strong>Tableau</strong> and on <strong>3D Printing &amp; Robotics</strong>.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-be">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <!-- EDIT: add the internship year(s) in .timeline__date when you know them -->
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-embedded.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Embedded Systems Intern</h3>
+                <p class="timeline__org">Matt Engineering Solutions</p>
+                <p class="timeline__text">Learned the foundations of embedded systems and microcontroller programming.</p>
+                <div class="timeline__more" id="more-matt" hidden>
+                  <p class="timeline__text">Understood system-level behaviour and how hardware and software components are integrated into a working product.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-matt">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-data.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Data Analytics Intern</h3>
+                <p class="timeline__org">Besant Technologies</p>
+                <p class="timeline__text">Gained hands-on data analytics experience with Excel and Power BI.</p>
+                <div class="timeline__more" id="more-besant" hidden>
+                  <p class="timeline__text">Performed data visualisation and analysis to draw meaningful insights from real datasets.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-besant">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-web.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Web Development Intern</h3>
+                <p class="timeline__org">AK InfoPark Private Limited</p>
+                <p class="timeline__text">Learned web development fundamentals with HTML and CSS.</p>
+                <div class="timeline__more" id="more-ak" hidden>
+                  <p class="timeline__text">Understood application flow, UI structure and basic front-end development concepts, which this website builds on.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-ak">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item timeline__item--current reveal">
+            <div class="timeline__date">Aug 2026 – Present</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/psiog.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Graduate Trainee</h3>
+                <p class="timeline__org">Psiog</p>
+                <p class="timeline__text">Joined on 17 August 2026. I'm training in professional software practices, and this website, with its Git workflow and CI/CD pipeline, is part of that training.</p>
+              </div>
+            </article>
+          </li>
+        </ol>
+
+        <!-- EDIT: project spotlight. Each <article class="project-card"> is one project; each <li class="flow__step"> is one step of "How it works". -->
+        <div class="projects">
+          <header class="projects__header reveal">
+            <h3 class="projects__title">Project spotlight</h3>
+            <p class="projects__lead">The two projects I'm proudest of, and how each one works.</p>
+          </header>
+
+          <div class="projects__grid">
+            <article class="project-card reveal">
+              <div class="project-card__head">
+                <img class="project-card__icon" src="images/journey/project-eeg.svg" alt="" width="48" height="48" loading="lazy">
+                <div>
+                  <p class="project-card__kicker">Final-year project · IoT + Machine Learning</p>
+                  <h4 class="project-card__title">Micro Sleep Detection System</h4>
+                </div>
+              </div>
+              <p class="project-card__text">A real-time system that reads EEG signals through an ESP32 and uses machine-learning classification in Python to tell alert and micro-sleep states apart. When micro-sleep is detected, a ThingSpeak cloud alert goes out: an end-to-end healthcare monitoring solution.</p>
+              <ul class="chips" aria-label="Technologies used in the Micro Sleep Detection System">
+                <li class="chip">ESP32</li>
+                <li class="chip">EEG</li>
+                <li class="chip">Python</li>
+                <li class="chip">Machine learning</li>
+                <li class="chip">ThingSpeak</li>
+              </ul>
+              <p class="flow__title" id="flow-eeg-title">How it works</p>
+              <ol class="flow" aria-labelledby="flow-eeg-title">
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-eeg.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">EEG signal</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-esp32.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ESP32 reads it</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-ml.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ML classifier</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-alert.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ThingSpeak alert</span>
+                </li>
+              </ol>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-card__head">
+                <img class="project-card__icon" src="images/journey/project-dashboard.svg" alt="" width="48" height="48" loading="lazy">
+                <div>
+                  <p class="project-card__kicker">Data analytics project · Power BI</p>
+                  <h4 class="project-card__title">Data Analysis Dashboard</h4>
+                </div>
+              </div>
+              <p class="project-card__text">An interactive Power BI dashboard that turns raw datasets into trends, patterns and actionable insights. Filters, charts and KPIs make the data easy to interpret, and building it strengthened my grasp of data-driven decision-making.</p>
+              <ul class="chips" aria-label="Technologies used in the Data Analysis Dashboard">
+                <li class="chip">Power BI</li>
+                <li class="chip">Excel</li>
+                <li class="chip">Data cleaning</li>
+                <li class="chip">Visualisation</li>
+              </ul>
+              <p class="flow__title" id="flow-pbi-title">How it works</p>
+              <ol class="flow" aria-labelledby="flow-pbi-title">
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-dataset.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Dataset</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-clean.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Clean &amp; model</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-kpi.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Filters, charts &amp; KPIs</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-insight.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Actionable insights</span>
+                </li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. PERSONAL LIKINGS ===================== -->
+    <section class="section section--alt" id="interests" aria-labelledby="interests-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">02</span> Personal Likings</p>
+          <h2 class="section__title" id="interests-title">Things I love</h2>
+          <p class="section__lead">Melodies on repeat, a good mystery, and a plate of something spicy.</p>
+        </header>
+
+        <div class="card-grid">
+          <!-- EDIT: each <article class="interest-card"> is one card. -->
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/music.svg" alt="Illustration of headphones surrounded by music notes" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Music</h3>
+              <p class="interest-card__text">Melody songs are my constant companion: on the commute, while cooking, and while coding.</p>
+              <ul class="chips" aria-label="Music tags">
+                <li class="chip">Melodies</li>
+                <li class="chip">Soft songs</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/movies.svg" alt="Illustration of a clapperboard next to a magnifying glass" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Movies &amp; Series</h3>
+              <p class="interest-card__text">Give me a twist I didn't see coming. Action, thriller, crime, mystery and adventure are my genres.</p>
+              <!-- EDIT (optional): add your top 5 titles as more chips -->
+              <ul class="chips" aria-label="Favourite genres">
+                <li class="chip">Action</li>
+                <li class="chip">Thriller</li>
+                <li class="chip">Crime</li>
+                <li class="chip">Mystery</li>
+                <li class="chip">Adventure</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/food.svg" alt="Illustration of a plate of spicy non-vegetarian food with steam rising" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Food</h3>
+              <p class="interest-card__text">A proud non-veg food lover. The spicier and more flavourful, the better.</p>
+              <ul class="chips" aria-label="Food tags">
+                <li class="chip">Non-veg</li>
+                <li class="chip">Spicy</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- SAMPLE CONTENT: Travel card. Replace with places you've visited or want to visit. -->
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/travel.svg" alt="Illustration of mountains, a winding path and a map pin" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Travel</h3>
+              <p class="interest-card__text">Hill stations and new cities are on my bucket list, along with plenty of new food to try there.</p>
+              <ul class="chips" aria-label="Travel tags">
+                <li class="chip">Hills</li>
+                <li class="chip">Bucket list</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="interest-card reveal">
+            <div class="interest-card__media">
+              <img src="images/interests/data-electronics.svg" alt="Illustration of a bar-chart dashboard beside a microcontroller board" width="480" height="360" loading="lazy">
+            </div>
+            <div class="interest-card__body">
+              <h3 class="interest-card__title">Data &amp; Electronics</h3>
+              <p class="interest-card__text">Where my degree meets my curiosity: wiring sensors to microcontrollers and turning raw numbers into dashboards.</p>
+              <ul class="chips" aria-label="Tech tags">
+                <li class="chip">Python</li>
+                <li class="chip">Power BI</li>
+                <li class="chip">ESP32</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. FAMILY ===================== -->
+    <section class="section section--family" id="family" aria-labelledby="family-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">03</span> Family</p>
+          <h2 class="section__title" id="family-title">My people</h2>
+          <p class="section__lead">The ones who cheer the loudest. Tap or hover a card to read more.</p>
+        </header>
+
+        <figure class="family__banner reveal">
+          <img src="images/family/family-group.svg" alt="Illustration of my family together: Appa, Amma, me and my brother" width="1200" height="500" loading="lazy">
+        </figure>
+
+        <div class="family__grid">
+          <!-- EDIT: each <div class="flip-card"> is one family member. Copy one to add, delete one to remove. -->
+          <div class="flip-card reveal">
+            <button class="flip-card__inner" type="button" aria-pressed="false">
+              <span class="flip-card__face flip-card__face--front">
+                <img class="flip-card__avatar" src="images/family/member-amma.svg" alt="" width="400" height="400" loading="lazy">
+                <span class="flip-card__relation">Amma</span>
+                <span class="flip-card__name">SornaLatha</span>
+                <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
+              </span>
+              <span class="flip-card__face flip-card__face--back">
+                <span class="flip-card__relation">Amma</span>
+                <span class="flip-card__quote">A homemaker and the heart of our home. Her care is what keeps all of us going.</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="flip-card reveal">
+            <button class="flip-card__inner" type="button" aria-pressed="false">
+              <span class="flip-card__face flip-card__face--front">
+                <img class="flip-card__avatar" src="images/family/member-appa.svg" alt="" width="400" height="400" loading="lazy">
+                <span class="flip-card__relation">Appa</span>
+                <span class="flip-card__name">Vetrivel Murugan</span>
+                <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
+              </span>
+              <span class="flip-card__face flip-card__face--back">
+                <span class="flip-card__relation">Appa</span>
+                <span class="flip-card__quote">Runs his own hotel. Hardworking every single day, and my first example of what dedication looks like.</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="flip-card reveal">
+            <button class="flip-card__inner" type="button" aria-pressed="false">
+              <span class="flip-card__face flip-card__face--front">
+                <img class="flip-card__avatar" src="images/family/member-brother.svg" alt="" width="400" height="400" loading="lazy">
+                <span class="flip-card__relation">My Brother</span>
+                <span class="flip-card__name">Sridhar</span>
+                <span class="flip-card__hint" aria-hidden="true">Tap to flip</span>
+              </span>
+              <span class="flip-card__face flip-card__face--back">
+                <span class="flip-card__relation">My Brother</span>
+                <span class="flip-card__quote">A System Designer at Psiog. My brother, my guide, and now my colleague too.</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. HOBBIES & PASSIONS ===================== -->
+    <section class="section" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">04</span> Hobbies &amp; Passions</p>
+          <h2 class="section__title" id="hobbies-title">How I spend my free time</h2>
+          <p class="section__lead">Cooking, music and badminton: the three things that recharge me. Click any tile to open it.</p>
+        </header>
+
+        <!-- EDIT: each <li> is one tile. data-title and data-description feed the lightbox. -->
+        <ul class="gallery">
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Cooking" data-description="Cooking is how I unwind. I love experimenting in the kitchen, especially with spicy non-veg dishes, and nothing beats seeing everyone enjoy the food.">
+              <img src="images/hobbies/cooking.svg" alt="Illustration of a kadai on the stove with spices and rising steam" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">Stirring up something spicy</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="On the court" data-description="Whether it is a friendly doubles match or a solo practice, badminton is where I get my energy back.">
+              <img src="images/hobbies/badminton-court.svg" alt="Illustration of a badminton court from above with the shuttle's flight path" width="480" height="320" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">On the court</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Badminton" data-description="Badminton keeps me active and competitive. A quick game is my favourite way to reset after a long day.">
+              <img src="images/hobbies/badminton.svg" alt="Illustration of a badminton racquet and a shuttlecock in motion" width="480" height="460" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">Smash, rally, repeat</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Music evenings" data-description="Evenings are for slowing down with soft melodies, sometimes while cooking dinner, sometimes just to relax.">
+              <img src="images/hobbies/music-evenings.svg" alt="Illustration of a spinning record player" width="480" height="320" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Music evenings</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Music" data-description="Melody songs fill my day. A good playlist makes long study sessions, commutes and cooking time so much better.">
+              <img src="images/hobbies/music-melody.svg" alt="Illustration of a melody waveform with a music player bar" width="480" height="440" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Melodies on repeat</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="The spice box" data-description="Every good dish starts with the right masala. Learning how each spice changes a dish is my favourite part of cooking.">
+              <img src="images/hobbies/cooking-spices.svg" alt="Illustration of a round spice box with seven colourful spices" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">The spice box</span></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== LIGHTBOX (used by the hobbies gallery) ===================== -->
+  <dialog class="lightbox" aria-labelledby="lightbox-title" aria-describedby="lightbox-description">
+    <div class="lightbox__panel">
+      <button class="lightbox__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__image" src="images/hobbies/cooking.svg" alt="" width="480" height="400">
+        <figcaption class="lightbox__text">
+          <span class="lightbox__counter" aria-live="polite"></span>
+          <span class="lightbox__title" id="lightbox-title">Hobby</span>
+          <span class="lightbox__description" id="lightbox-description"></span>
+        </figcaption>
+      </figure>
+      <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- ===================== 6. FOOTER ===================== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__inner">
+      <!-- EDIT: "How this site is built". Each <li class="pipeline__step"> is one step of the CI/CD pipeline. -->
+      <section class="pipeline" aria-labelledby="pipeline-title">
+        <div class="pipeline__header">
+          <p class="section__eyebrow">Behind the scenes</p>
+          <h2 class="pipeline__title" id="pipeline-title">How this site is built</h2>
+          <p class="pipeline__lead">Every change passes through five automated GitHub Actions steps before it reaches this page.</p>
+        </div>
+        <ol class="pipeline__steps">
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Push</h3>
+            <p class="pipeline__text">A git push or pull request starts the run; PRs must pass title, alt-text and console.log checks.</p>
+            <code class="pipeline__file">pr-checks.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Validate</h3>
+            <p class="pipeline__text">HTMLHint, CSSLint and csstree-validator check the code on every push.</p>
+            <code class="pipeline__file">validate.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Deploy</h3>
+            <p class="pipeline__text">A merge to main publishes the site to GitHub Pages automatically.</p>
+            <code class="pipeline__file">deploy.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Lighthouse</h3>
+            <p class="pipeline__text">Audits the live site after each deploy and every Monday, and keeps the report.</p>
+            <code class="pipeline__file">lighthouse.yml</code>
+          </li>
+          <li class="pipeline__step">
+            <h3 class="pipeline__name">Notify</h3>
+            <p class="pipeline__text">Reports whether the deploy succeeded or failed, with an optional Slack message.</p>
+            <code class="pipeline__file">notify.yml</code>
+          </li>
+        </ol>
+        <a class="pipeline__link" href="https://github.com/Mahalakshmi-Vetrivel/profile-website/actions" target="_blank" rel="noopener noreferrer">See the runs on GitHub Actions <span aria-hidden="true">&rarr;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+      </section>
+
+      <div class="footer__intro">
+        <p class="section__eyebrow"><span class="section__number">05</span> Let's connect</p>
+        <h2 class="footer__title">Thanks for scrolling all the way down.</h2>
+        <p class="footer__text">I'm always happy to talk about data, electronics or the web. Reach out on any of these.</p>
+      </div>
+
+      <!-- EDIT: social links -->
+      <ul class="social" aria-label="Social links">
+        <li>
+          <a class="social__link" href="https://www.linkedin.com/in/mahalakshmi-v-4726592b6" target="_blank" rel="noopener noreferrer">
+            <svg class="social__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 6v5.45h-4V15.9c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.95 1.3-1.95 2.66v4.94h-4z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="https://github.com/Mahalakshmi-Vetrivel" target="_blank" rel="noopener noreferrer">
+            <svg class="social__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+            <span>GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a class="social__link" href="mailto:mahalakshmi.vetrivel@psiog.com">
+            <svg class="social__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3z"/></svg>
+            <span>Email</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="footer__bottom">
+        <p class="footer__credit">Built with HTML, CSS &amp; JS | Deployed via GitHub Actions</p>
+        <p class="footer__copy">&copy; <span class="footer__year">2026</span> Mahalakshmi Vetrivel</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</body>
+</html>
