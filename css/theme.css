@@ -8,8 +8,8 @@
 
    Sections in this file:
      1. Light theme (default)            :root
-     2. Warm family sub-palette          .section--family
-   (The dark theme is added later on the theme/dark-mode branch.)
+     2. Dark theme                       [data-theme="dark"]
+     3. Warm family sub-palette          .section--family (light + dark)
    ========================================================================== */
 
 /* 1. LIGHT THEME (default) — "Lavender, minimal & clean" ------------------ */
@@ -141,12 +141,49 @@
 
   /* Theme switcher (feature flags read by style.css)
      The toggle button only appears once a second theme exists. */
-  --theme-toggle-display: none;   /* no second theme yet, so hide the toggle */
+  --theme-toggle-display: inline-flex;
   --icon-sun-display: none;
   --icon-moon-display: block;
 }
 
-/* 2. WARM FAMILY SUB-PALETTE ------------------------------------------------
+/* 2. DARK THEME ------------------------------------------------------------
+   Same variable names, new values. main.js adds data-theme="dark" to <html>
+   when the toggle is pressed; nothing else changes.                        */
+[data-theme="dark"] {
+  --color-primary: #c3b4ff;
+  --color-primary-light: #9d8bea;
+  --color-primary-dark: #e4dcff;
+  --color-primary-soft: #2a2342;
+
+  --color-secondary: #262038;
+  --color-secondary-dark: #352d4d;
+
+  --color-bg: #13111c;
+  --color-bg-secondary: #1a1726;
+  --color-bg-card: #211d30;
+  --color-header-bg: rgba(19, 17, 28, 0.82);
+  --color-overlay: rgba(8, 7, 12, 0.9);
+
+  --color-text: #ece8f7;
+  --color-text-secondary: #aaa3c2;
+  --color-text-inverse: #13111c;
+
+  --color-accent: #a58bff;
+  --color-accent-soft: rgba(165, 139, 255, 0.16);
+  --color-success: #6fd3a6;
+  --color-border: #322b47;
+  --color-focus: #c3b4ff;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-glow: rgba(165, 139, 255, 0.12);
+
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --image-filter: brightness(0.9) saturate(0.95);
+
+  --icon-sun-display: block;
+  --icon-moon-display: none;
+}
+
+/* 3. WARM FAMILY SUB-PALETTE ------------------------------------------------
    Section-scoped override: inside .section--family the same variable names
    take warmer values, so the family section feels cosy in both themes.   */
 .section--family {
@@ -158,4 +195,15 @@
   --color-text-secondary: #6d5649;
   --color-border: #f0dccd;
   --color-shadow: rgba(140, 80, 40, 0.1);
+}
+
+[data-theme="dark"] .section--family {
+  --color-bg: #1d1614;
+  --color-bg-card: #2a201d;
+  --color-primary: #f0b48e;
+  --color-primary-soft: #3a2a24;
+  --color-accent: #e3a27c;
+  --color-text-secondary: #c9b2a5;
+  --color-border: #443530;
+  --color-shadow: rgba(0, 0, 0, 0.45);
 }
