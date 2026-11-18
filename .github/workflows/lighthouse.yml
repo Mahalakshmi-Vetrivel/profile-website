@@ -1,0 +1,77 @@
+# Workflow 4 — Lighthouse Performance Audit
+# Runs automatically after a SUCCESSFUL "Deploy to GitHub Pages" run, every
+# Monday at 09:00 UTC (14:30 IST), or manually. The HTML/JSON reports are
+# uploaded as a downloadable artifact kept for 30 days.
+name: Lighthouse Audit
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types: [completed]
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Work out the live site URL
+        id: site
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          site_owner="${OWNER,,}"   # GitHub Pages hostnames are lowercase
+          if [ "${REPO,,}" = "${site_owner}.github.io" ]; then
+            url="https://${site_owner}.github.io/"
+          else
+            url="https://${site_owner}.github.io/${REPO}/"
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Auditing $url"
+
+      - name: Wait until the site responds
+        env:
+          URL: ${{ steps.site.outputs.url }}
+        run: |
+          for i in $(seq 1 12); do
+            if curl -fsS -o /dev/null "$URL"; then echo "Site is up"; exit 0; fi
+            echo "Not ready yet (attempt $i/12), waiting 10s..."; sleep 10
+          done
+          echo "::error::$URL did not respond. Is GitHub Pages enabled with source 'GitHub Actions'?"
+          exit 1
+
+      - name: Run Lighthouse
+        id: lhci
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.site.outputs.url }}
+          uploadArtifacts: false
+          temporaryPublicStorage: true
+
+      - name: Upload Lighthouse Report
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: ${{ steps.lhci.outputs.resultsPath }}
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Add report links to the run summary
+        env:
+          LINKS: ${{ steps.lhci.outputs.links }}
+        run: |
+          {
+            echo "## Lighthouse audit"
+            echo "Download the **lighthouse-report** artifact below (kept for 30 days)."
+            echo ""
+            echo "Public report link(s): \`$LINKS\`"
+          } >> "$GITHUB_STEP_SUMMARY"
