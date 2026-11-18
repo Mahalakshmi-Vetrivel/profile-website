@@ -1,0 +1,2 @@
+--ignore=known-properties,order-alphabetical,box-model,adjoining-classes,universal-selector,box-sizing,compatible-vendor-prefixes,important,font-sizes,qualified-headings,unique-headings,fallback-colors,gradients,unqualified-attributes
+--errors=errors,duplicate-properties,empty-rules,display-property-grouping,import,ids,zero-units,vendor-prefix,duplicate-background-images,shorthand,outline-none
