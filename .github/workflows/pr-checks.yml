@@ -1,0 +1,87 @@
+# Workflow 3 — PR Quality Checks
+# Three independent checks run in parallel; "all-checks-passed" runs only if
+# all three succeed (needs:). Make "all-checks-passed" a required status check
+# in branch protection so a failing PR cannot be merged.
+name: PR Quality Checks
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  check-html-titles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check all HTML files have a non-empty title tag
+        run: |
+          shopt -s nullglob
+          files=( *.html )
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::error::No HTML files found in the repository root"
+            exit 1
+          fi
+          status=0
+          for file in "${files[@]}"; do
+            if ! tr '\n' ' ' < "$file" | grep -Eiq '<title>[[:space:]]*[^<[:space:]][^<]*</title>'; then
+              echo "::error file=$file::$file is missing a non-empty <title> tag"
+              status=1
+            fi
+          done
+          [ $status -eq 0 ] && echo "All ${#files[@]} HTML file(s) have title tags"
+          exit $status
+
+  check-image-alt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check every <img> has an alt attribute
+        # Python reads whole tags, so <img> tags split over several lines are
+        # handled correctly (a simple line-by-line grep would miss them).
+        run: |
+          python3 - <<'PY'
+          import glob, re, sys
+          files = glob.glob("*.html")
+          if not files:
+              print("::error::No HTML files found"); sys.exit(1)
+          missing, total = [], 0
+          for path in files:
+              html = open(path, encoding="utf-8").read()
+              for match in re.finditer(r"<img\b[^>]*>", html, re.I | re.S):
+                  total += 1
+                  if not re.search(r"\salt\s*=", match.group(0), re.I):
+                      line = html.count("\n", 0, match.start()) + 1
+                      missing.append(f"{path}:{line}: {' '.join(match.group(0).split())[:100]}")
+          if missing:
+              print("::error::Images missing alt attributes:")
+              print("\n".join(missing)); sys.exit(1)
+          print(f"All {total} images have alt attributes")
+          PY
+
+  check-no-console-log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check for console.log in JS
+        run: |
+          shopt -s nullglob
+          files=( js/*.js )
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::error::No JavaScript files found in js/"
+            exit 1
+          fi
+          if grep -n "console\.log" "${files[@]}"; then
+            echo "::error::Remove console.log before merging"
+            exit 1
+          fi
+          echo "No console.log found in ${#files[@]} JS file(s)"
+
+  all-checks-passed:
+    runs-on: ubuntu-latest
+    needs: [check-html-titles, check-image-alt, check-no-console-log]
+    steps:
+      - name: All checks passed
+        run: echo "All PR checks passed! Ready for review."
