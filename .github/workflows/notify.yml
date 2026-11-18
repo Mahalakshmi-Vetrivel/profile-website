@@ -1,0 +1,77 @@
+# Workflow 5 — Deployment Notifications
+# Runs after every "Deploy to GitHub Pages" run and reports success or failure.
+# Slack is optional: add a repository secret named SLACK_WEBHOOK_URL to turn it
+# on. Without the secret the workflow still runs, writes the status to the run
+# summary, and clearly says that no Slack message was sent.
+name: Deployment Notification
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}   # secret is masked in logs
+      CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+      RUN_URL: ${{ github.event.workflow_run.html_url }}
+      COMMIT_MSG: ${{ github.event.workflow_run.head_commit.message }}
+      OWNER: ${{ github.repository_owner }}
+      REPO: ${{ github.event.repository.name }}
+    steps:
+      - name: Work out the live site URL
+        run: |
+          site_owner="${OWNER,,}"
+          if [ "${REPO,,}" = "${site_owner}.github.io" ]; then
+            echo "SITE_URL=https://${site_owner}.github.io/" >> "$GITHUB_ENV"
+          else
+            echo "SITE_URL=https://${site_owner}.github.io/${REPO}/" >> "$GITHUB_ENV"
+          fi
+
+      - name: Notify on Success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: |
+          echo "Deployment successful!"
+          echo "Site live at: $SITE_URL"
+          {
+            echo "## ✅ Deployment successful"
+            echo "Live site: $SITE_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "MESSAGE=✅ Profile site deployed! Live at $SITE_URL" >> "$GITHUB_ENV"
+
+      - name: Notify on Failure
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: |
+          echo "Deployment FAILED! Check the Actions tab: $RUN_URL"
+          {
+            echo "## ❌ Deployment failed"
+            echo "Details: $RUN_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "MESSAGE=❌ Profile site deployment failed. Details: $RUN_URL" >> "$GITHUB_ENV"
+
+      - name: Report other outcomes (cancelled, skipped, timed out)
+        if: ${{ github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.conclusion != 'failure' }}
+        run: |
+          echo "Deployment finished with status: $CONCLUSION"
+          echo "## ⚠️ Deployment status: $CONCLUSION" >> "$GITHUB_STEP_SUMMARY"
+          echo "MESSAGE=⚠️ Profile site deployment finished with status: $CONCLUSION ($RUN_URL)" >> "$GITHUB_ENV"
+
+      - name: Send Slack message
+        if: ${{ env.SLACK_WEBHOOK_URL != '' }}
+        run: |
+          payload=$(jq -n --arg text "$MESSAGE" --arg commit "$COMMIT_MSG" \
+            '{text: ($text + "\nCommit: " + ($commit | split("\n")[0]))}')
+          curl -fsS -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK_URL"
+          echo "Slack notification sent."
+          echo "Slack notification: **sent**" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Slack not configured
+        if: ${{ env.SLACK_WEBHOOK_URL == '' }}
+        run: |
+          echo "::notice::SLACK_WEBHOOK_URL secret is not set, so no Slack message was sent. Status was reported above."
+          echo "Slack notification: **not sent** (SLACK_WEBHOOK_URL secret not configured)" >> "$GITHUB_STEP_SUMMARY"
