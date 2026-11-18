@@ -8,18 +8,18 @@ A single-page personal profile website built with **HTML5, CSS3 and vanilla Java
 
 | # | Section | id | What it shows |
 |---|---|---|---|
-| 1 | Hero | `#hero` | Name, typing tagline, illustrated avatar, "Explore My Journey →" button |
+| 1 | Hero | `#hero` | Name, typing tagline, full-bleed profile photo, "Explore My Journey →" button |
 | 2 | Professional Journey | `#journey` | "By the numbers" count-up strip, CSS timeline (school → B.E. ECE → internships → Psiog), project spotlight with "how it works" flows |
-| 3 | Personal Likings | `#interests` | Card grid (3 / 2 / 1 columns, short last row centred): music, movies, food, travel, data |
-| 4 | Family | `#family` | Group banner + flip cards with a warm sub-palette |
-| 5 | Hobbies & Passions | `#hobbies` | 6-tile masonry gallery with a vanilla-JS lightbox |
-| 6 | Footer | `#footer` | "How this site is built" CI/CD pipeline, LinkedIn, GitHub, email, build credit, auto year, back-to-top |
+| 3 | Personal Likings | `#interests` | Photo card grid (3 / 2 / 1 columns): music, movies, food, books, travel, data & electronics |
+| 4 | Family | `#family` | Group banner + flip cards with a warm gold sub-palette |
+| 5 | Hobbies & Passions | `#hobbies` | Photo gallery (cooking, badminton, music, gardening, friends & family) with a vanilla-JS lightbox |
+| 6 | Footer | `#footer` | LinkedIn, GitHub, email, build credit, auto year, back-to-top |
 
-**Extra touches:** scroll progress bar, section dots (desktop), soft cursor glow in the hero and 3D tilt on the interest cards (mouse only), and an animated circle reveal when switching theme. Every animation respects `prefers-reduced-motion`.
+**Design:** editorial layout with bold uppercase headings and oversized chapter numbers. **Extra touches:** scroll progress bar, section dots (desktop), soft cursor glow in the hero and 3D tilt on the interest cards (mouse only), and an animated circle reveal when switching theme. Every animation respects `prefers-reduced-motion`.
 
 ## One-file theming
 
-Every colour, font, size, spacing value, radius, shadow and animation speed lives in **`css/theme.css`** as a CSS variable. `css/style.css` only uses `var(--...)`. Changing `theme.css` re-themes the whole site — no HTML or `style.css` edits. The site ships with a light theme (default) and a dark theme (toggle button, remembered with `localStorage`).
+Every colour, font, size, spacing value, radius, shadow and animation speed lives in **`css/theme.css`** as a CSS variable. `css/style.css` only uses `var(--...)`. Changing `theme.css` re-themes the whole site — no HTML or `style.css` edits. The site ships with a dark "black & radium green" theme (default) and a light "white & emerald" theme (toggle button, remembered with `localStorage`). A third palette, warm tones, lives on the `theme/warm-tones` branch and changes only `theme.css`.
 
 ## Project structure
 
@@ -29,7 +29,8 @@ css/theme.css         ALL design variables (light, dark, family sub-palette)
 css/style.css         layout + components (var() only)
 js/main.js            navigation, theme, timeline, reveal, flip cards, lightbox, year,
                       progress bar, section dots, glow, tilt, typing tagline, count-up
-images/               hero/ journey/ interests/ family/ hobbies/  (SVG illustrations)
+images/               hero/ journey/ interests/ family/ hobbies/  (photos + SVG icons;
+                      each photo has an SVG fallback via data-fallback)
 .github/workflows/    validate, deploy, pr-checks, lighthouse, notify
 .htmlhintrc           HTMLHint rules       .csslintrc   CSSLint rules
 ```
@@ -50,9 +51,7 @@ Double-click `index.html`, or for a local server (recommended): `python -m http.
 
 ## Branching
 
-`main` (production, protected) ← `develop` (integration) ← `feature/*`, `theme/*`, `ci/*`. Every change goes through a pull request with a review.
-
-Full beginner instructions: see [PROJECT_GUIDE.md](PROJECT_GUIDE.md).
+`main` (production, protected) ← `develop` (integration) ← `feature/*`, `theme/*`, `ci/*`. Every change goes through a pull request with green status checks; `main` and `develop` are protected.
 
 ---
 Built with HTML, CSS & JS | Deployed via GitHub Actions
