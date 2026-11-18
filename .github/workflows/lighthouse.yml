@@ -64,6 +64,9 @@ jobs:
           path: ${{ steps.lhci.outputs.resultsPath }}
           retention-days: 30
           if-no-files-found: error
+          # the report folder (.lighthouseci) starts with a dot, and
+          # upload-artifact skips hidden files unless this is true
+          include-hidden-files: true
 
       - name: Add report links to the run summary
         env:
