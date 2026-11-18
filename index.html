@@ -81,7 +81,11 @@
           <h1 class="hero__title hero__animate hero__animate--2" id="hero-title">
             Mahalakshmi <span class="hero__title-accent">Vetrivel</span>
           </h1>
-          <p class="hero__tagline hero__animate hero__animate--3">ECE Graduate | Graduate Trainee at Psiog | Data &amp; Web Enthusiast</p>
+          <!-- EDIT: the tagline. main.js types each part between the | signs in turn; the full line stays for screen readers and no-JS visitors. -->
+          <p class="hero__tagline hero__animate hero__animate--3">
+            <span class="hero__tagline-text">ECE Graduate | Graduate Trainee at Psiog | Data &amp; Web Enthusiast</span>
+            <span class="hero__typed" aria-hidden="true" aria-live="off" hidden><span class="hero__typed-text"></span><span class="hero__cursor"></span></span>
+          </p>
           <p class="hero__intro hero__animate hero__animate--4">
             I like turning signals into insight, whether that's EEG data on an ESP32, numbers in a Power BI dashboard, or a clean page like this one.
           </p>
@@ -117,6 +121,29 @@
           <h2 class="section__title" id="journey-title">From circuits to code</h2>
           <p class="section__lead">School, engineering, three internships, two projects I'm proud of, and my first job.</p>
         </header>
+
+        <!-- EDIT: "By the numbers". Each number is the final value; main.js counts up to it (decimals are kept). -->
+        <div class="stats reveal">
+          <h3 class="stats__title">By the numbers</h3>
+          <ul class="stats__grid">
+            <li class="stat">
+              <span class="stat__value">8.10</span>
+              <span class="stat__label">CGPA in B.E. ECE</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">3</span>
+              <span class="stat__label">Internships completed</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">2</span>
+              <span class="stat__label">Projects built end to end</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">5</span>
+              <span class="stat__label">Automated workflows run this site</span>
+            </li>
+          </ul>
+        </div>
 
         <ol class="timeline">
           <!-- EDIT: each <li class="timeline__item"> is one milestone. Copy one to add more. -->
