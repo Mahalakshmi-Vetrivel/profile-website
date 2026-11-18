@@ -31,6 +31,7 @@
         <li><a class="nav__link" href="#journey">Journey</a></li>
         <li><a class="nav__link" href="#interests">Interests</a></li>
         <li><a class="nav__link" href="#family">Family</a></li>
+        <li><a class="nav__link" href="#hobbies">Hobbies</a></li>
         <li><a class="nav__link" href="#footer">Contact</a></li>
       </ul>
 
@@ -382,7 +383,80 @@
       </div>
     </section>
 
+    <!-- ===================== 5. HOBBIES & PASSIONS ===================== -->
+    <section class="section" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">04</span> Hobbies &amp; Passions</p>
+          <h2 class="section__title" id="hobbies-title">How I spend my free time</h2>
+          <p class="section__lead">Cooking, music and badminton: the three things that recharge me. Click any tile to open it.</p>
+        </header>
+
+        <!-- EDIT: each <li> is one tile. data-title and data-description feed the lightbox. -->
+        <ul class="gallery">
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Cooking" data-description="Cooking is how I unwind. I love experimenting in the kitchen, especially with spicy non-veg dishes, and nothing beats seeing everyone enjoy the food.">
+              <img src="images/hobbies/cooking.svg" alt="Illustration of a kadai on the stove with spices and rising steam" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">Stirring up something spicy</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="On the court" data-description="Whether it is a friendly doubles match or a solo practice, badminton is where I get my energy back.">
+              <img src="images/hobbies/badminton-court.svg" alt="Illustration of a badminton court from above with the shuttle's flight path" width="480" height="320" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">On the court</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Badminton" data-description="Badminton keeps me active and competitive. A quick game is my favourite way to reset after a long day.">
+              <img src="images/hobbies/badminton.svg" alt="Illustration of a badminton racquet and a shuttlecock in motion" width="480" height="460" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Badminton</span><span class="gallery__label">Smash, rally, repeat</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Music evenings" data-description="Evenings are for slowing down with soft melodies, sometimes while cooking dinner, sometimes just to relax.">
+              <img src="images/hobbies/music-evenings.svg" alt="Illustration of a spinning record player" width="480" height="320" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Music evenings</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="Music" data-description="Melody songs fill my day. A good playlist makes long study sessions, commutes and cooking time so much better.">
+              <img src="images/hobbies/music-melody.svg" alt="Illustration of a melody waveform with a music player bar" width="480" height="440" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Music</span><span class="gallery__label">Melodies on repeat</span></span>
+            </button>
+          </li>
+          <li class="gallery__item reveal">
+            <button class="gallery__button" type="button" data-title="The spice box" data-description="Every good dish starts with the right masala. Learning how each spice changes a dish is my favourite part of cooking.">
+              <img src="images/hobbies/cooking-spices.svg" alt="Illustration of a round spice box with seven colourful spices" width="480" height="400" loading="lazy">
+              <span class="gallery__caption"><span class="gallery__tag">Cooking</span><span class="gallery__label">The spice box</span></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <!-- ===================== LIGHTBOX (used by the hobbies gallery) ===================== -->
+  <dialog class="lightbox" aria-labelledby="lightbox-title" aria-describedby="lightbox-description">
+    <div class="lightbox__panel">
+      <button class="lightbox__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__image" src="images/hobbies/cooking.svg" alt="" width="480" height="400">
+        <figcaption class="lightbox__text">
+          <span class="lightbox__counter" aria-live="polite"></span>
+          <span class="lightbox__title" id="lightbox-title">Hobby</span>
+          <span class="lightbox__description" id="lightbox-description"></span>
+        </figcaption>
+      </figure>
+      <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </dialog>
 
   <!-- ===================== 6. FOOTER ===================== -->
   <footer class="footer" id="footer">
