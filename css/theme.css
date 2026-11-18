@@ -1,0 +1,161 @@
+/* ==========================================================================
+   theme.css — THE ONE THEME FILE
+   --------------------------------------------------------------------------
+   Every colour, font, size, spacing value, radius, shadow and speed used by
+   the website is defined here as a CSS variable. style.css only ever uses
+   var(--...) — so changing THIS file re-themes the entire site.
+   No HTML edits and no style.css edits are needed to change the theme.
+
+   Sections in this file:
+     1. Light theme (default)            :root
+     2. Warm family sub-palette          .section--family
+   (The dark theme is added later on the theme/dark-mode branch.)
+   ========================================================================== */
+
+/* 1. LIGHT THEME (default) — "Lavender, minimal & clean" ------------------ */
+:root {
+  /* Primary Colors */
+  --color-primary: #5b4b9a;
+  --color-primary-light: #9c8ad8;
+  --color-primary-dark: #3e3272;
+  --color-primary-soft: #ece6fb;
+
+  /* Secondary Colors */
+  --color-secondary: #e9e3fa;
+  --color-secondary-dark: #d8cff3;
+
+  /* Background Colors */
+  --color-bg: #fcfbfe;
+  --color-bg-secondary: #f5f2fc;
+  --color-bg-card: #ffffff;
+  --color-header-bg: rgba(252, 251, 254, 0.82);
+  --color-overlay: rgba(24, 20, 38, 0.86);
+
+  /* Text Colors */
+  --color-text: #24203a;
+  --color-text-secondary: #5f5976;
+  --color-text-inverse: #ffffff;
+
+  /* Accent & Borders */
+  --color-accent: #654fc4;
+  --color-accent-soft: rgba(101, 79, 196, 0.12);
+  --color-success: #2f8a63;
+  --color-border: #e6e1f3;
+  --color-focus: #654fc4;
+  --color-shadow: rgba(60, 40, 120, 0.08);
+  --color-glow: rgba(101, 79, 196, 0.13);
+
+  /* Gradients (built only from colours above) */
+  --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, var(--color-primary-soft), transparent 60%),
+    radial-gradient(40rem 30rem at 0% 100%, var(--color-bg-secondary), transparent 70%);
+  --gradient-caption: linear-gradient(to top, rgba(24, 20, 38, 0.72) 0%, rgba(24, 20, 38, 0.35) 55%, rgba(24, 20, 38, 0) 100%);
+  --gradient-progress: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px var(--color-shadow), 0 2px 8px var(--color-shadow);
+  --shadow-md: 0 8px 24px var(--color-shadow), 0 2px 6px var(--color-shadow);
+  --shadow-lg: 0 24px 60px rgba(60, 40, 120, 0.16);
+
+  /* Images */
+  --image-filter: none;
+
+  /* Typography */
+  --font-primary: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.78rem;
+  --font-size-md: 1.0625rem;
+  --font-size-lg: 1.25rem;
+  --font-size-h1: clamp(2.6rem, 5.2vw + 1rem, 5.25rem);
+  --font-size-h2: clamp(2rem, 2.6vw + 1rem, 3rem);
+  --font-size-h3: 1.3rem;
+  --font-size-subtitle: clamp(1.5rem, 1.2vw + 1.1rem, 1.9rem);
+  --font-size-stat: clamp(2rem, 2.4vw + 1.2rem, 2.9rem);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 650;
+  --line-height-body: 1.65;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.4;
+  --letter-spacing-wide: 0.14em;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 7rem;
+
+  /* Layout */
+  --max-width: 1160px;
+  --header-height: 4.25rem;
+  --border-radius: 14px;
+  --border-radius-lg: 28px;
+  --border-radius-pill: 999px;
+  --border-width: 1px;
+  --touch-target: 2.75rem;          /* 44px: minimum size of anything you tap */
+  --container-gutter-wide: 3.5rem;  /* side padding on desktop, leaves room for the section dots */
+
+  /* Component sizes */
+  --progress-height: 3px;
+  --dot-size: 0.625rem;
+  --dot-scale-active: 1.45;
+  --flow-icon-size: 3rem;
+  --arrow-size: 0.5rem;
+  --node-size: 2.5rem;
+  --glow-radius: 18rem;
+  --cursor-width: 2px;
+  --hero-visual-landscape: min(34vw, 15rem);  /* avatar size on a phone held sideways */
+
+  /* Grid column templates (layout tokens: change here to re-shape grids) */
+  --grid-columns-1: minmax(0, 1fr);
+  --grid-columns-2: repeat(2, minmax(0, 1fr));
+  --grid-columns-3: repeat(3, minmax(0, 1fr));
+  --grid-columns-4: repeat(4, minmax(0, 1fr));
+  --grid-columns-5: repeat(5, minmax(0, 1fr));
+  --grid-columns-6: repeat(6, minmax(0, 1fr));
+  --grid-auto-equal: minmax(0, 1fr);  /* equal auto-columns for rows of any length */
+  --grid-hero: minmax(0, 1.25fr) minmax(0, 1fr);
+  --grid-timeline: 10rem minmax(0, 1fr);
+  --grid-footer: minmax(0, 1.4fr) minmax(0, 1fr);
+  --grid-lightbox: minmax(0, 1.3fr) minmax(0, 1fr);
+
+  /* Motion */
+  --transition-speed: 0.3s;
+  --transition-speed-fast: 0.15s;
+  --transition-speed-slow: 0.7s;
+  --transition-speed-theme: 0.65s;  /* circle reveal when the theme toggle is pressed */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tilt-max: 6deg;                 /* interest-card 3D tilt */
+  --tilt-perspective: 900px;
+  --count-duration: 1.6s;           /* "By the numbers" count-up */
+  --typing-speed: 0.07s;            /* per letter typed */
+  --typing-delete-speed: 0.035s;    /* per letter deleted */
+  --typing-pause: 1.8s;             /* how long a full word stays */
+  --cursor-blink: 1s;
+  --pulse-speed: 2.4s;              /* "live" ring around the status and current-job dots */
+  --pulse-spread: 10px;
+
+  /* Theme switcher (feature flags read by style.css)
+     The toggle button only appears once a second theme exists. */
+  --theme-toggle-display: none;   /* no second theme yet, so hide the toggle */
+  --icon-sun-display: none;
+  --icon-moon-display: block;
+}
+
+/* 2. WARM FAMILY SUB-PALETTE ------------------------------------------------
+   Section-scoped override: inside .section--family the same variable names
+   take warmer values, so the family section feels cosy in both themes.   */
+.section--family {
+  --color-bg: #fbf3ec;
+  --color-bg-card: #fffaf6;
+  --color-primary: #94482a;
+  --color-primary-soft: #f6e0d0;
+  --color-accent: #a65a33;
+  --color-text-secondary: #6d5649;
+  --color-border: #f0dccd;
+  --color-shadow: rgba(140, 80, 40, 0.1);
+}
