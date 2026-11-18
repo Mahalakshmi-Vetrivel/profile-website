@@ -8,60 +8,74 @@
 
    Sections in this file:
      1. Light theme (default)            :root
-     2. Warm family sub-palette          .section--family
-   (The dark theme is added later on the theme/dark-mode branch.)
+     2. Dark theme                       [data-theme="dark"]
+     3. Warm family sub-palette          .section--family (light + dark)
    ========================================================================== */
 
-/* 1. LIGHT THEME (default) — "Lavender, minimal & clean" ------------------ */
+/* 1. LIGHT THEME — "Clean white & emerald" ---------------------------------- */
 :root {
   /* Primary Colors */
-  --color-primary: #5b4b9a;
-  --color-primary-light: #9c8ad8;
-  --color-primary-dark: #3e3272;
-  --color-primary-soft: #ece6fb;
+  --color-primary: #08803f;
+  --color-primary-light: #22c55e;
+  --color-primary-dark: #055c2d;
+  --color-primary-soft: #dcf7e6;
 
   /* Secondary Colors */
-  --color-secondary: #e9e3fa;
-  --color-secondary-dark: #d8cff3;
+  --color-secondary: #e7f4ec;
+  --color-secondary-dark: #cde8d7;
 
   /* Background Colors */
-  --color-bg: #fcfbfe;
-  --color-bg-secondary: #f5f2fc;
+  --color-bg: #f7f9f7;
+  --color-bg-secondary: #edf3ef;
   --color-bg-card: #ffffff;
-  --color-header-bg: rgba(252, 251, 254, 0.82);
-  --color-overlay: rgba(24, 20, 38, 0.86);
+  --color-header-bg: rgba(247, 249, 247, 0.85);
+  --color-overlay: rgba(6, 14, 10, 0.88);
 
   /* Text Colors */
-  --color-text: #24203a;
-  --color-text-secondary: #5f5976;
+  --color-text: #0e1712;
+  --color-text-secondary: #4a5a51;
   --color-text-inverse: #ffffff;
+  --color-on-image: #ffffff;        /* text placed over photos, same in every theme */
 
   /* Accent & Borders */
-  --color-accent: #654fc4;
-  --color-accent-soft: rgba(101, 79, 196, 0.12);
-  --color-success: #2f8a63;
-  --color-border: #e6e1f3;
-  --color-focus: #654fc4;
-  --color-shadow: rgba(60, 40, 120, 0.08);
-  --color-glow: rgba(101, 79, 196, 0.13);
+  --color-accent: #0a9a4a;
+  --color-accent-soft: rgba(10, 154, 74, 0.12);
+  --color-success: #16a34a;
+  --color-border: #d9e5dd;
+  --color-focus: #08803f;
+  --color-shadow: rgba(8, 60, 30, 0.08);
+  --color-glow: rgba(34, 197, 94, 0.14);
 
   /* Gradients (built only from colours above) */
   --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, var(--color-primary-soft), transparent 60%),
     radial-gradient(40rem 30rem at 0% 100%, var(--color-bg-secondary), transparent 70%);
-  --gradient-caption: linear-gradient(to top, rgba(24, 20, 38, 0.72) 0%, rgba(24, 20, 38, 0.35) 55%, rgba(24, 20, 38, 0) 100%);
+  --gradient-caption: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.45) 55%, rgba(0, 0, 0, 0) 100%);
   --gradient-progress: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
 
   /* Shadows */
   --shadow-sm: 0 1px 2px var(--color-shadow), 0 2px 8px var(--color-shadow);
   --shadow-md: 0 8px 24px var(--color-shadow), 0 2px 6px var(--color-shadow);
-  --shadow-lg: 0 24px 60px rgba(60, 40, 120, 0.16);
+  --shadow-lg: 0 24px 60px rgba(8, 60, 30, 0.16);
+
+  /* Editorial layer: hero photo fades and big chapter numbers */
+  --color-chapter: rgba(8, 128, 63, 0.08);
+  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(247, 249, 247, 0) 45%);
+  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(247, 249, 247, 0) 40%);
+  --hero-photo-width: 54%;
+  --hero-photo-position: 50% 32%;
 
   /* Images */
   --image-filter: none;
 
   /* Typography */
   --font-primary: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-heading: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-heading: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-weight-heading: 800;
+  --heading-transform: uppercase;
+  --letter-spacing-tight: -0.03em;
+  --font-size-display: clamp(2.9rem, 6.4vw + 1rem, 7rem);
+  --font-size-section: clamp(2.2rem, 3.4vw + 1rem, 3.9rem);
+  --font-size-chapter: clamp(5.5rem, 11vw, 10.5rem);
   --font-mono: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
   --font-size-base: 16px;
   --font-size-sm: 0.875rem;
@@ -141,21 +155,79 @@
 
   /* Theme switcher (feature flags read by style.css)
      The toggle button only appears once a second theme exists. */
-  --theme-toggle-display: none;   /* no second theme yet, so hide the toggle */
+  --theme-toggle-display: inline-flex;
   --icon-sun-display: none;
   --icon-moon-display: block;
 }
 
-/* 2. WARM FAMILY SUB-PALETTE ------------------------------------------------
+/* 2. DARK THEME ------------------------------------------------------------
+   Same variable names, new values. main.js adds data-theme="dark" to <html>
+   when the toggle is pressed; nothing else changes.                        */
+[data-theme="dark"] {
+  /* "Black & radium green" — the default look of the site */
+  --color-primary: #39ff88;
+  --color-primary-light: #1fd36b;
+  --color-primary-dark: #b6ffd2;
+  --color-primary-soft: #0f2a1c;
+
+  --color-secondary: #111a15;
+  --color-secondary-dark: #1b2a22;
+
+  --color-bg: #070b09;
+  --color-bg-secondary: #0c120f;
+  --color-bg-card: #111a15;
+  --color-header-bg: rgba(7, 11, 9, 0.84);
+  --color-overlay: rgba(2, 5, 3, 0.92);
+
+  --color-text: #e9f2ed;
+  --color-text-secondary: #9fb3a8;
+  --color-text-inverse: #04110a;
+
+  --color-accent: #39ff88;
+  --color-accent-soft: rgba(57, 255, 136, 0.14);
+  --color-success: #39ff88;
+  --color-border: #1d2b24;
+  --color-focus: #39ff88;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-glow: rgba(57, 255, 136, 0.12);
+
+  --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, rgba(57, 255, 136, 0.12), transparent 60%),
+    radial-gradient(40rem 30rem at 0% 100%, rgba(31, 211, 107, 0.08), transparent 70%);
+
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --image-filter: none;
+
+  --color-chapter: rgba(57, 255, 136, 0.06);
+  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(7, 11, 9, 0.55) 30%, rgba(7, 11, 9, 0) 60%);
+  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(7, 11, 9, 0) 45%);
+
+  --icon-sun-display: block;
+  --icon-moon-display: none;
+}
+
+/* 3. WARM FAMILY SUB-PALETTE ------------------------------------------------
    Section-scoped override: inside .section--family the same variable names
-   take warmer values, so the family section feels cosy in both themes.   */
+   take new values. Backgrounds and the flipped card stay in the site's green
+   family; the names, rings and hints get a warm gold touch, which pairs with
+   green and gives the section its own warm feel.                           */
 .section--family {
-  --color-bg: #fbf3ec;
-  --color-bg-card: #fffaf6;
-  --color-primary: #94482a;
-  --color-primary-soft: #f6e0d0;
-  --color-accent: #a65a33;
-  --color-text-secondary: #6d5649;
-  --color-border: #f0dccd;
-  --color-shadow: rgba(140, 80, 40, 0.1);
+  --color-bg: #f7f9f7;
+  --color-bg-card: #ffffff;
+  --color-primary: #8a5f00;
+  --color-primary-soft: #e3f5e9;
+  --color-accent: #9c6b00;
+  --color-text-secondary: #4a5a51;
+  --color-border: #d9e5dd;
+  --color-shadow: rgba(8, 60, 30, 0.08);
+}
+
+[data-theme="dark"] .section--family {
+  --color-bg: #070b09;
+  --color-bg-card: #111a15;
+  --color-primary: #f3c969;
+  --color-primary-soft: #0f2a1c;
+  --color-accent: #e9b949;
+  --color-text-secondary: #9fb3a8;
+  --color-border: #1d2b24;
+  --color-shadow: rgba(0, 0, 0, 0.5);
 }

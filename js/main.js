@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  const THEME_KEY = "mv-profile-theme";
+  const THEME_KEY = "mv-profile-theme-v2"; // v2: forget old "light" choices so the new dark default shows
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -52,8 +52,22 @@
     }
   }
 
-  applyTheme(readStoredTheme() === "dark" ? "dark" : "light"); // light is the default
+  applyTheme(readStoredTheme() === "light" ? "light" : "dark"); // dark is the default
   root.classList.add("js"); // lets CSS know JavaScript is running (used by reveal animations)
+
+  /* ---------- Photo fallback ----------
+     Interest and hobby images point to real photos (.jpg). Until a photo is
+     added, the image fails to load and we swap in its illustration from
+     data-fallback. Image errors don't bubble, so we listen in the capture phase. */
+  document.addEventListener("error", (event) => {
+    const img = event.target;
+    if (!(img instanceof HTMLImageElement) || !img.dataset.fallback) {
+      return;
+    }
+    const fallback = img.dataset.fallback;
+    delete img.dataset.fallback; // only try once
+    img.setAttribute("src", fallback);
+  }, true);
 
   /* ---------- 2. Theme toggle button ---------- */
   function initThemeToggle() {
