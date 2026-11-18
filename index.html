@@ -28,6 +28,7 @@
       </a>
 
       <ul class="nav__links" id="nav-menu">
+        <li><a class="nav__link" href="#journey">Journey</a></li>
         <li><a class="nav__link" href="#footer">Contact</a></li>
       </ul>
 
@@ -89,6 +90,141 @@
       <a class="hero__scroll" href="#journey" aria-label="Scroll to Professional Journey">
         <span class="hero__scroll-line" aria-hidden="true"></span>
       </a>
+    </section>
+
+    <!-- ===================== 2. PROFESSIONAL JOURNEY ===================== -->
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__eyebrow"><span class="section__number">01</span> Professional Journey</p>
+          <h2 class="section__title" id="journey-title">From circuits to code</h2>
+          <p class="section__lead">School, engineering, three internships, two projects I'm proud of, and my first job.</p>
+        </header>
+
+        <ol class="timeline">
+          <!-- EDIT: each <li class="timeline__item"> is one milestone. Copy one to add more. -->
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2021 – 2022</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/school.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Higher Secondary (HSC)</h3>
+                <p class="timeline__org">St. Joseph Convent Higher Secondary School</p>
+                <p class="timeline__text">Completed higher secondary with 83.83%, building the maths and science foundation for engineering.</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2022 – 2026</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/graduation.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">B.E. Electronics &amp; Communication Engineering</h3>
+                <p class="timeline__org">Amrita College of Engineering and Technology</p>
+                <p class="timeline__text">Graduated with a CGPA of 8.10, with a growing pull towards programming, data and problem solving.</p>
+                <div class="timeline__more" id="more-be" hidden>
+                  <p class="timeline__text">Alongside core ECE subjects I built skills in Python, object-oriented programming, data structures and algorithms (basics) and introductory machine learning. I also completed <strong>Python for Beginners</strong> (Udemy) and attended workshops on <strong>Tableau</strong> and on <strong>3D Printing &amp; Robotics</strong>.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-be">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <!-- EDIT: add the internship year(s) in .timeline__date when you know them -->
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-embedded.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Embedded Systems Intern</h3>
+                <p class="timeline__org">Matt Engineering Solutions</p>
+                <p class="timeline__text">Learned the foundations of embedded systems and microcontroller programming.</p>
+                <div class="timeline__more" id="more-matt" hidden>
+                  <p class="timeline__text">Understood system-level behaviour and how hardware and software components are integrated into a working product.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-matt">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-data.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Data Analytics Intern</h3>
+                <p class="timeline__org">Besant Technologies</p>
+                <p class="timeline__text">Gained hands-on data analytics experience with Excel and Power BI.</p>
+                <div class="timeline__more" id="more-besant" hidden>
+                  <p class="timeline__text">Performed data visualisation and analysis to draw meaningful insights from real datasets.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-besant">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Internship</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/internship-web.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Web Development Intern</h3>
+                <p class="timeline__org">AK InfoPark Private Limited</p>
+                <p class="timeline__text">Learned web development fundamentals with HTML and CSS.</p>
+                <div class="timeline__more" id="more-ak" hidden>
+                  <p class="timeline__text">Understood application flow, UI structure and basic front-end development concepts, which this website builds on.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-ak">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Final-year project</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/project-eeg.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Micro Sleep Detection System</h3>
+                <p class="timeline__org">IoT + Machine Learning project</p>
+                <p class="timeline__text">A real-time system that watches EEG signals through an ESP32 and raises an alert when micro-sleep is detected.</p>
+                <div class="timeline__more" id="more-eeg" hidden>
+                  <p class="timeline__text">I applied machine-learning classification in Python to separate alert and micro-sleep states, designed a real-time alert mechanism with ThingSpeak cloud integration, and brought the hardware and software together into an end-to-end healthcare monitoring solution.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-eeg">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">Project</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/project-dashboard.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Data Analysis Dashboard</h3>
+                <p class="timeline__org">Power BI project</p>
+                <p class="timeline__text">An interactive Power BI dashboard that turns datasets into trends, patterns and actionable insights.</p>
+                <div class="timeline__more" id="more-pbi" hidden>
+                  <p class="timeline__text">Built filters, charts and KPIs to make the data easier to interpret, and strengthened my understanding of data-driven decision-making and business intelligence.</p>
+                </div>
+                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-pbi">Show more</button>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item timeline__item--current reveal">
+            <div class="timeline__date">Aug 2026 – Present</div>
+            <article class="timeline__card">
+              <img class="timeline__icon" src="images/journey/psiog.svg" alt="" width="48" height="48" loading="lazy">
+              <div class="timeline__body">
+                <h3 class="timeline__title">Graduate Trainee</h3>
+                <p class="timeline__org">Psiog</p>
+                <p class="timeline__text">Joined on 17 August 2026. I'm training in professional software practices, and this website, with its Git workflow and CI/CD pipeline, is part of that training.</p>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
     </section>
 
   </main>
