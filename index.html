@@ -224,38 +224,6 @@
             </article>
           </li>
 
-          <li class="timeline__item reveal">
-            <div class="timeline__date">Final-year project</div>
-            <article class="timeline__card">
-              <img class="timeline__icon" src="images/journey/project-eeg.svg" alt="" width="48" height="48" loading="lazy">
-              <div class="timeline__body">
-                <h3 class="timeline__title">Micro Sleep Detection System</h3>
-                <p class="timeline__org">IoT + Machine Learning project</p>
-                <p class="timeline__text">A real-time system that watches EEG signals through an ESP32 and raises an alert when micro-sleep is detected.</p>
-                <div class="timeline__more" id="more-eeg" hidden>
-                  <p class="timeline__text">I applied machine-learning classification in Python to separate alert and micro-sleep states, designed a real-time alert mechanism with ThingSpeak cloud integration, and brought the hardware and software together into an end-to-end healthcare monitoring solution.</p>
-                </div>
-                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-eeg">Show more</button>
-              </div>
-            </article>
-          </li>
-
-          <li class="timeline__item reveal">
-            <div class="timeline__date">Project</div>
-            <article class="timeline__card">
-              <img class="timeline__icon" src="images/journey/project-dashboard.svg" alt="" width="48" height="48" loading="lazy">
-              <div class="timeline__body">
-                <h3 class="timeline__title">Data Analysis Dashboard</h3>
-                <p class="timeline__org">Power BI project</p>
-                <p class="timeline__text">An interactive Power BI dashboard that turns datasets into trends, patterns and actionable insights.</p>
-                <div class="timeline__more" id="more-pbi" hidden>
-                  <p class="timeline__text">Built filters, charts and KPIs to make the data easier to interpret, and strengthened my understanding of data-driven decision-making and business intelligence.</p>
-                </div>
-                <button class="timeline__toggle" type="button" aria-expanded="false" aria-controls="more-pbi">Show more</button>
-              </div>
-            </article>
-          </li>
-
           <li class="timeline__item timeline__item--current reveal">
             <div class="timeline__date">Aug 2026 – Present</div>
             <article class="timeline__card">
@@ -268,6 +236,89 @@
             </article>
           </li>
         </ol>
+
+        <!-- EDIT: project spotlight. Each <article class="project-card"> is one project; each <li class="flow__step"> is one step of "How it works". -->
+        <div class="projects">
+          <header class="projects__header reveal">
+            <h3 class="projects__title">Project spotlight</h3>
+            <p class="projects__lead">The two projects I'm proudest of, and how each one works.</p>
+          </header>
+
+          <div class="projects__grid">
+            <article class="project-card reveal">
+              <div class="project-card__head">
+                <img class="project-card__icon" src="images/journey/project-eeg.svg" alt="" width="48" height="48" loading="lazy">
+                <div>
+                  <p class="project-card__kicker">Final-year project · IoT + Machine Learning</p>
+                  <h4 class="project-card__title">Micro Sleep Detection System</h4>
+                </div>
+              </div>
+              <p class="project-card__text">A real-time system that reads EEG signals through an ESP32 and uses machine-learning classification in Python to tell alert and micro-sleep states apart. When micro-sleep is detected, a ThingSpeak cloud alert goes out: an end-to-end healthcare monitoring solution.</p>
+              <ul class="chips" aria-label="Technologies used in the Micro Sleep Detection System">
+                <li class="chip">ESP32</li>
+                <li class="chip">EEG</li>
+                <li class="chip">Python</li>
+                <li class="chip">Machine learning</li>
+                <li class="chip">ThingSpeak</li>
+              </ul>
+              <p class="flow__title" id="flow-eeg-title">How it works</p>
+              <ol class="flow" aria-labelledby="flow-eeg-title">
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-eeg.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">EEG signal</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-esp32.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ESP32 reads it</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-ml.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ML classifier</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-alert.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">ThingSpeak alert</span>
+                </li>
+              </ol>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-card__head">
+                <img class="project-card__icon" src="images/journey/project-dashboard.svg" alt="" width="48" height="48" loading="lazy">
+                <div>
+                  <p class="project-card__kicker">Data analytics project · Power BI</p>
+                  <h4 class="project-card__title">Data Analysis Dashboard</h4>
+                </div>
+              </div>
+              <p class="project-card__text">An interactive Power BI dashboard that turns raw datasets into trends, patterns and actionable insights. Filters, charts and KPIs make the data easy to interpret, and building it strengthened my grasp of data-driven decision-making.</p>
+              <ul class="chips" aria-label="Technologies used in the Data Analysis Dashboard">
+                <li class="chip">Power BI</li>
+                <li class="chip">Excel</li>
+                <li class="chip">Data cleaning</li>
+                <li class="chip">Visualisation</li>
+              </ul>
+              <p class="flow__title" id="flow-pbi-title">How it works</p>
+              <ol class="flow" aria-labelledby="flow-pbi-title">
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-dataset.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Dataset</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-clean.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Clean &amp; model</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-kpi.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Filters, charts &amp; KPIs</span>
+                </li>
+                <li class="flow__step">
+                  <img class="flow__icon" src="images/journey/flow-insight.svg" alt="" width="48" height="48" loading="lazy">
+                  <span class="flow__label">Actionable insights</span>
+                </li>
+              </ol>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
