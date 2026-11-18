@@ -12,39 +12,39 @@
      3. Warm family sub-palette          .section--family (light + dark)
    ========================================================================== */
 
-/* 1. LIGHT THEME — "Clean white & emerald" ---------------------------------- */
+/* 1. LIGHT THEME — "Warm tones" variant ---------------------------------- */
 :root {
   /* Primary Colors */
-  --color-primary: #08803f;
-  --color-primary-light: #22c55e;
-  --color-primary-dark: #055c2d;
-  --color-primary-soft: #dcf7e6;
+  --color-primary: #a4461f;
+  --color-primary-light: #e08a5c;
+  --color-primary-dark: #74300f;
+  --color-primary-soft: #fbe6d8;
 
   /* Secondary Colors */
-  --color-secondary: #e7f4ec;
-  --color-secondary-dark: #cde8d7;
+  --color-secondary: #f8e7da;
+  --color-secondary-dark: #f0d3bf;
 
   /* Background Colors */
-  --color-bg: #f7f9f7;
-  --color-bg-secondary: #edf3ef;
+  --color-bg: #fffaf5;
+  --color-bg-secondary: #fbefe4;
   --color-bg-card: #ffffff;
-  --color-header-bg: rgba(247, 249, 247, 0.85);
+  --color-header-bg: rgba(255, 250, 245, 0.85);
   --color-overlay: rgba(6, 14, 10, 0.88);
 
   /* Text Colors */
-  --color-text: #0e1712;
-  --color-text-secondary: #4a5a51;
+  --color-text: #2b1d16;
+  --color-text-secondary: #6b5549;
   --color-text-inverse: #ffffff;
   --color-on-image: #ffffff;        /* text placed over photos, same in every theme */
 
   /* Accent & Borders */
-  --color-accent: #0a9a4a;
-  --color-accent-soft: rgba(10, 154, 74, 0.12);
-  --color-success: #16a34a;
-  --color-border: #d9e5dd;
-  --color-focus: #08803f;
-  --color-shadow: rgba(8, 60, 30, 0.08);
-  --color-glow: rgba(34, 197, 94, 0.14);
+  --color-accent: #b5541f;
+  --color-accent-soft: rgba(181, 84, 31, 0.12);
+  --color-success: #c27c0e;
+  --color-border: #f0dccd;
+  --color-focus: #a4461f;
+  --color-shadow: rgba(120, 60, 30, 0.09);
+  --color-glow: rgba(224, 138, 92, 0.16);
 
   /* Gradients (built only from colours above) */
   --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, var(--color-primary-soft), transparent 60%),
@@ -55,12 +55,12 @@
   /* Shadows */
   --shadow-sm: 0 1px 2px var(--color-shadow), 0 2px 8px var(--color-shadow);
   --shadow-md: 0 8px 24px var(--color-shadow), 0 2px 6px var(--color-shadow);
-  --shadow-lg: 0 24px 60px rgba(8, 60, 30, 0.16);
+  --shadow-lg: 0 24px 60px rgba(120, 60, 30, 0.16);
 
   /* Editorial layer: hero photo fades and big chapter numbers */
-  --color-chapter: rgba(8, 128, 63, 0.08);
-  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(247, 249, 247, 0) 45%);
-  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(247, 249, 247, 0) 40%);
+  --color-chapter: rgba(164, 70, 31, 0.08);
+  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(255, 250, 245, 0) 45%);
+  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(255, 250, 245, 0) 40%);
   --hero-photo-width: 54%;
   --hero-photo-position: 50% 32%;
 
@@ -164,42 +164,42 @@
    Same variable names, new values. main.js adds data-theme="dark" to <html>
    when the toggle is pressed; nothing else changes.                        */
 [data-theme="dark"] {
-  /* "Black & radium green" — the default look of the site */
-  --color-primary: #39ff88;
-  --color-primary-light: #1fd36b;
-  --color-primary-dark: #b6ffd2;
-  --color-primary-soft: #0f2a1c;
+  /* "Espresso & amber" — warm-tones dark variant */
+  --color-primary: #ffb347;
+  --color-primary-light: #e8913a;
+  --color-primary-dark: #ffe0b3;
+  --color-primary-soft: #2e1f12;
 
-  --color-secondary: #111a15;
-  --color-secondary-dark: #1b2a22;
+  --color-secondary: #1c1510;
+  --color-secondary-dark: #2a2018;
 
-  --color-bg: #070b09;
-  --color-bg-secondary: #0c120f;
-  --color-bg-card: #111a15;
-  --color-header-bg: rgba(7, 11, 9, 0.84);
+  --color-bg: #0f0b08;
+  --color-bg-secondary: #15100c;
+  --color-bg-card: #1c1510;
+  --color-header-bg: rgba(15, 11, 8, 0.84);
   --color-overlay: rgba(2, 5, 3, 0.92);
 
-  --color-text: #e9f2ed;
-  --color-text-secondary: #9fb3a8;
-  --color-text-inverse: #04110a;
+  --color-text: #f5ece4;
+  --color-text-secondary: #bba897;
+  --color-text-inverse: #1a0f06;
 
-  --color-accent: #39ff88;
-  --color-accent-soft: rgba(57, 255, 136, 0.14);
-  --color-success: #39ff88;
-  --color-border: #1d2b24;
-  --color-focus: #39ff88;
+  --color-accent: #ffb347;
+  --color-accent-soft: rgba(255, 179, 71, 0.14);
+  --color-success: #ffb347;
+  --color-border: #2e241b;
+  --color-focus: #ffb347;
   --color-shadow: rgba(0, 0, 0, 0.5);
-  --color-glow: rgba(57, 255, 136, 0.12);
+  --color-glow: rgba(255, 179, 71, 0.12);
 
-  --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, rgba(57, 255, 136, 0.12), transparent 60%),
-    radial-gradient(40rem 30rem at 0% 100%, rgba(31, 211, 107, 0.08), transparent 70%);
+  --gradient-hero: radial-gradient(60rem 40rem at 85% 10%, rgba(255, 179, 71, 0.12), transparent 60%),
+    radial-gradient(40rem 30rem at 0% 100%, rgba(232, 145, 58, 0.08), transparent 70%);
 
   --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
   --image-filter: none;
 
-  --color-chapter: rgba(57, 255, 136, 0.06);
-  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(7, 11, 9, 0.55) 30%, rgba(7, 11, 9, 0) 60%);
-  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(7, 11, 9, 0) 45%);
+  --color-chapter: rgba(255, 179, 71, 0.06);
+  --gradient-hero-photo-x: linear-gradient(90deg, var(--color-bg) 0%, rgba(15, 11, 8, 0.55) 30%, rgba(15, 11, 8, 0) 60%);
+  --gradient-hero-photo-y: linear-gradient(0deg, var(--color-bg) 0%, rgba(15, 11, 8, 0) 45%);
 
   --icon-sun-display: block;
   --icon-moon-display: none;
@@ -211,10 +211,10 @@
    family; the names, rings and hints get a warm gold touch, which pairs with
    green and gives the section its own warm feel.                           */
 .section--family {
-  --color-bg: #f7f9f7;
+  --color-bg: #fffaf5;
   --color-bg-card: #ffffff;
   --color-primary: #8a5f00;
-  --color-primary-soft: #e3f5e9;
+  --color-primary-soft: #f7edd2;
   --color-accent: #9c6b00;
   --color-text-secondary: #4a5a51;
   --color-border: #d9e5dd;
@@ -222,10 +222,10 @@
 }
 
 [data-theme="dark"] .section--family {
-  --color-bg: #070b09;
-  --color-bg-card: #111a15;
+  --color-bg: #0f0b08;
+  --color-bg-card: #1c1510;
   --color-primary: #f3c969;
-  --color-primary-soft: #0f2a1c;
+  --color-primary-soft: #2e1f12;
   --color-accent: #e9b949;
   --color-text-secondary: #9fb3a8;
   --color-border: #1d2b24;
