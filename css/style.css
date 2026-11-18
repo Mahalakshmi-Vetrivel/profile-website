@@ -420,6 +420,9 @@ button {
   position: relative;
   z-index: 1;
   width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 50%;
   box-shadow: var(--shadow-lg);
   animation: float 7s ease-in-out infinite;
@@ -790,6 +793,9 @@ button {
 
 .interest-card__media img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;  /* real photos of any size are cropped to the same shape */
+  object-fit: cover;
   transition: transform var(--transition-speed-slow) var(--ease);
 }
 
@@ -961,6 +967,9 @@ button {
 
 .gallery__button img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;  /* real photos of any size are cropped to the same shape */
+  object-fit: cover;
   transition: transform var(--transition-speed-slow) var(--ease);
 }
 
@@ -982,7 +991,7 @@ button {
   flex-direction: column;
   padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
   background: var(--gradient-caption);
-  color: var(--color-text-inverse);
+  color: var(--color-on-image);
 }
 
 .gallery__tag {
@@ -1746,6 +1755,11 @@ button {
   line-height: var(--line-height-tight);
 }
 
+/* phones: an odd last stat spans the full row instead of sitting alone */
+.stat:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .stat__label {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
@@ -1754,7 +1768,11 @@ button {
 
 @media (min-width: 640px) {
   .stats__grid {
-    grid-template-columns: var(--grid-columns-4);
+    grid-template-columns: var(--grid-columns-3);
+  }
+
+  .stat:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 
   .stat {
@@ -2107,4 +2125,217 @@ button {
     min-height: 0;
     line-height: var(--line-height-snug);
   }
+}
+
+/* ==========================================================================
+   16. EDITORIAL LOOK
+   Inspired by personal-brand sites for athletes: a cinematic full-bleed hero
+   photo, bold uppercase headings, oversized chapter numbers and big stats.
+   Every colour, font and size comes from theme.css.
+   ========================================================================== */
+
+/* ---------- 16a. Hero: full-bleed photo ---------- */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__visual {
+  width: 100%;
+  max-width: 30rem;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+}
+
+.hero__visual::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--gradient-hero-photo-y);
+  content: "";
+  pointer-events: none;
+}
+
+.hero__avatar {
+  aspect-ratio: 4 / 5;
+  object-position: var(--hero-photo-position);
+  border-radius: 0;
+  box-shadow: none;
+  animation: none;
+}
+
+.hero__title {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 0.95;
+  text-transform: var(--heading-transform);
+}
+
+.hero__title-accent {
+  font-style: normal;
+}
+
+.hero__intro {
+  max-width: 36rem;
+}
+
+/* ---------- 16b. Navigation and buttons ---------- */
+.nav__link,
+.btn {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- 16c. Section headings with oversized chapter numbers ---------- */
+main {
+  counter-reset: chapter;
+}
+
+.section__header {
+  position: relative;
+}
+
+.section__header::before {
+  position: absolute;
+  top: -0.42em;
+  left: -0.04em;
+  color: var(--color-chapter);
+  content: counter(chapter, decimal-leading-zero);
+  counter-increment: chapter;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-chapter);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.section__header > * {
+  position: relative;
+}
+
+.section__number {
+  display: none;
+}
+
+.section__title,
+.footer__title {
+  font-size: var(--font-size-section);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1;
+  text-transform: var(--heading-transform);
+}
+
+.interest-card__title,
+.timeline__title,
+.project-card__title {
+  font-weight: var(--font-weight-heading);
+  letter-spacing: 0.01em;
+  text-transform: var(--heading-transform);
+}
+
+/* ---------- 16d. By the numbers: scoreboard style ---------- */
+.stat {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.stat__value {
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.stat__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* ---------- 16e. Cards: photo first, accent edge on hover ---------- */
+.interest-card:hover,
+.gallery__button:hover {
+  border-color: var(--color-primary);
+}
+
+.gallery__tag {
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* ---------- 16f. Desktop: photo fills the right side of the hero ---------- */
+@media (min-width: 900px) {
+  .hero {
+    align-items: center;
+  }
+
+  /* static, so the photo is placed against the full-width hero, not the container */
+  .hero__inner {
+    position: static;
+    grid-template-columns: var(--grid-columns-1);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 44rem;
+  }
+
+  .hero__visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    width: var(--hero-photo-width);
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .hero__visual::after {
+    background: var(--gradient-hero-photo-x), var(--gradient-hero-photo-y);
+  }
+
+  .hero__avatar {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .stat {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}
+
+/* phones held sideways: smaller photo beside the text */
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 560px) and (max-width: 899px) {
+  .hero__visual {
+    width: var(--hero-visual-landscape);
+  }
+
+  .hero__avatar {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* ---------- 16g. Family: portrait rings and banner frame ---------- */
+.flip-card__avatar {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+}
+
+.family__banner {
+  border: var(--border-width) solid var(--color-border);
 }
